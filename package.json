@@ -1,0 +1,22 @@
+{
+  "name": "types",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/The-LukeZ/supportmail-types.git"
+  },
+  "keywords": [],
+  "author": "The-LukeZ",
+  "license": "",
+  "type": "module",
+  "types": "./index.d.ts",
+  "bugs": {
+    "url": "https://github.com/The-LukeZ/supportmail-types/issues"
+  },
+  "homepage": "https://github.com/The-LukeZ/supportmail-types#readme",
+  "devDependencies": {
+    "discord.js": "^14.18.0",
+    "mongoose": "^8.10.1"
+  }
+}

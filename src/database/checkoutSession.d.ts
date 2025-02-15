@@ -1,10 +1,5 @@
 import { HydratedDocument } from "mongoose";
-
-export type PriceKey =
-  | "gold2weeks"
-  | "gold6weeks"
-  | "gold2months"
-  | "gold1year";
+import { PriceKey } from "./subscription";
 
 /**
  * Holds the information about a Stripe Checkout session

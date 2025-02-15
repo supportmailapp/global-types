@@ -1,6 +1,12 @@
 import { HydratedDocument } from "mongoose";
 import { BillingPeriod } from "../utils/enums";
 
+export type PriceKey =
+  | "gold2weeks"
+  | "gold6weeks"
+  | "gold2months"
+  | "gold1year";
+
 export interface ISubscription {
   /**
    * The server ID that the subscription is for

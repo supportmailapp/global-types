@@ -1,7 +1,6 @@
 {
   "name": "supportmail-types",
   "version": "1.0.7",
-  "main": "./dist/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/The-LukeZ/supportmail-types.git"
@@ -17,5 +16,14 @@
   "devDependencies": {
     "discord.js": "^14.18.0",
     "mongoose": "^8.10.1"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
   }
 }

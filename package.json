@@ -1,6 +1,6 @@
 {
   "name": "supportmail-types",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "index",
   "repository": {
     "type": "git",
@@ -10,7 +10,7 @@
   "author": "The-LukeZ",
   "license": "",
   "type": "module",
-  "types": "./index.d.ts",
+  "types": "./src/index.d.ts",
   "bugs": {
     "url": "https://github.com/The-LukeZ/supportmail-types/issues"
   },

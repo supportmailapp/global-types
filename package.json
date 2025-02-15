@@ -1,7 +1,7 @@
 {
   "name": "supportmail-types",
-  "version": "1.0.1",
-  "main": "index.js",
+  "version": "1.0.2",
+  "main": "index",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/The-LukeZ/supportmail-types.git"

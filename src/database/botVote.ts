@@ -1,4 +1,4 @@
-import { HydratedDocument, Schema } from "mongoose";
+import { HydratedDocument } from "mongoose";
 
 export interface IBotVote {
   userId: string;

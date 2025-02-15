@@ -61,8 +61,8 @@ export interface IPremiumCode {
    * The date when the code expires.
    */
   expiresAt?: Date;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: NativeDate;
+  updatedAt: NativeDate;
 }
 
 /**

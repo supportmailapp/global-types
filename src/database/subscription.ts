@@ -1,5 +1,5 @@
 import { HydratedDocument } from "mongoose";
-import { BillingPeriod } from "../utils/enums";
+import { BillingPeriod } from "../utils/enums.js";
 
 export type PriceKey =
   | "gold2weeks"
@@ -57,8 +57,8 @@ export interface ISubscription {
    * A note about the subscription (e.g. why it was canceled)
    */
   note?: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: NativeDate;
+  updatedAt: NativeDate;
 }
 
 export type DBSubscriptionDocument = HydratedDocument<ISubscription>;

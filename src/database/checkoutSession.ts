@@ -1,5 +1,5 @@
 import { HydratedDocument } from "mongoose";
-import { PriceKey } from "./subscription";
+import { PriceKey } from "./subscription.js";
 
 /**
  * Holds the information about a Stripe Checkout session
@@ -27,8 +27,8 @@ export interface ICheckoutSession {
    * This ensures that the user can change their mind and select a different subscription.
    */
   plan: PriceKey;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: NativeDate;
+  updatedAt: NativeDate;
 }
 
 export type CheckoutSessionDocument = HydratedDocument<ICheckoutSession>;

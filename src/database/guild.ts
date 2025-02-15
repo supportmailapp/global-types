@@ -4,7 +4,7 @@ import {
   BlacklistEntryType,
   NotificationLevel,
   SpecialReportChannelType,
-} from "../utils/enums.ts";
+} from "../utils/enums.js";
 
 export interface ICustomModalField {
   /** Min: 1 | Max: 5 */
@@ -137,7 +137,7 @@ export interface IDBGuild {
   reportConfig: IReportConfig;
   blacklistImmune?: BlacklistImmunityEntry[]; // [ [ type, "id" ] ]
   flags: IGuildFlags;
-  createdAt: Date;
+  createdAt: NativeDate;
 }
 
 export type DBGuildDocument = HydratedDocument<IDBGuild>;

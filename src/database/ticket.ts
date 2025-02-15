@@ -1,9 +1,10 @@
-import { HydratedDocument, Schema } from "mongoose";
+import { HydratedDocument } from "mongoose";
+import { TicketState, TicketStatus } from "../utils/enums.js";
 
 /**
  * `{ [key: string]: string }` is a map of question position to answer
  */
-export type QuestionAnswer = Schema.Types.Mixed<{ [key: string]: string }>;
+export type QuestionAnswer = Map<string, string>;
 
 export interface IFeedback {
   stars: number;
@@ -27,7 +28,7 @@ export interface ITicket {
   lastActive: string; // For sorting purposes
   feedback?: IFeedback;
   stateTag?: TicketState; // For tag management (indicates which tag should be applied atm)
-  createdAt: Date;
+  createdAt: NativeDate;
   updateAt: Date;
 }
 

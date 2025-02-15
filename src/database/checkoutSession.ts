@@ -27,8 +27,8 @@ export interface ICheckoutSession {
    * This ensures that the user can change their mind and select a different subscription.
    */
   plan: PriceKey;
-  createdAt: NativeDate;
-  updatedAt: NativeDate;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export type CheckoutSessionDocument = HydratedDocument<ICheckoutSession>;

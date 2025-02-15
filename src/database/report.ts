@@ -12,8 +12,8 @@ export interface IReport {
   status: ReportStatus;
   comment?: string;
   resolvedBy?: string;
-  createdAt: NativeDate;
-  updatedAt: NativeDate;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export type DBReportDocument = HydratedDocument<IReport>;

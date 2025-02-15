@@ -9,8 +9,8 @@ export interface ICloseRequest {
   ticketId: string;
   postId: string;
   author: string; // User ID
-  createdAt: NativeDate;
-  updatedAt: NativeDate;
+  createdAt: Date;
+  updatedAt: Date;
   closeTime?: string; // Only given if should be auto-closed
   dmMessage: string;
   guildMessage: string;

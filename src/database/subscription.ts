@@ -57,8 +57,8 @@ export interface ISubscription {
    * A note about the subscription (e.g. why it was canceled)
    */
   note?: string;
-  createdAt: NativeDate;
-  updatedAt: NativeDate;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export type DBSubscriptionDocument = HydratedDocument<ISubscription>;

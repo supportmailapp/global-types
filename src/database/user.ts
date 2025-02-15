@@ -7,8 +7,8 @@ export interface IDBUser {
   t_left: number;
   tips: boolean;
   accessToken?: string;
-  updatedAt: NativeDate;
-  createdAt: NativeDate;
+  updatedAt: Date;
+  createdAt: Date;
 }
 
 export type DBUserDocument = HydratedDocument<IDBUser>;

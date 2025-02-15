@@ -28,8 +28,8 @@ export interface IBlacklistEntry {
    * - `4` = tags
    */
   _module: BlacklistModule;
-  updatedAt: NativeDate;
-  createdAt: NativeDate;
+  updatedAt: Date;
+  createdAt: Date;
 }
 
 export type BlacklistEntryDocument = HydratedDocument<IBlacklistEntry>;

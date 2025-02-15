@@ -5,8 +5,8 @@ export interface ITag {
   name: string;
   content?: string;
   onlyTickets: boolean;
-  createdAt: NativeDate;
-  updatedAt: NativeDate;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export type DBTagDocument = HydratedDocument<ITag>;

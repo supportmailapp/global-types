@@ -27,8 +27,8 @@ export interface ITicket {
   lastActive: string; // For sorting purposes
   feedback?: IFeedback;
   stateTag?: TicketState; // For tag management (indicates which tag should be applied atm)
-  createdAt: NativeDate;
-  updateAt: NativeDate;
+  createdAt: Date;
+  updateAt: Date;
 }
 
 export type DBTicketDocument = HydratedDocument<ITicket>;

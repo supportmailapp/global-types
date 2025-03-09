@@ -115,3 +115,9 @@ export enum BillingPeriod {
   sixMonths = 4,
   oneYear = 5,
 }
+
+export enum SetupTicketsErrorCode {
+  MissingPermissions = 0,
+  CategoryCreateFailed = 1,
+  ForumCreateFailed = 2,
+}

@@ -12,3 +12,5 @@ export * from "./database/tag.js";
 export * from "./database/premiumCode.js";
 export * from "./database/checkoutSession.js";
 export * from "./database/botVote.js";
+
+export * from "./api/errors.js";

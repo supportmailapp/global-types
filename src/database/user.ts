@@ -6,7 +6,7 @@ export interface IDBUser {
   autoRedirect: boolean;
   t_left: number;
   tips: boolean;
-  accessToken?: string;
+  accessToken?: string  | null;
   updatedAt: NativeDate;
   createdAt: NativeDate;
 }

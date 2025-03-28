@@ -3,16 +3,16 @@
   "version": "1.2.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/The-LukeZ/supportmail-types.git"
+    "url": "git+https://github.com/supportmailapp/global-types.git"
   },
   "keywords": [],
   "author": "The-LukeZ",
   "license": "",
   "type": "module",
   "bugs": {
-    "url": "https://github.com/The-LukeZ/supportmail-types/issues"
+    "url": "https://github.com/supportmailapp/global-types/issues"
   },
-  "homepage": "https://github.com/The-LukeZ/supportmail-types#readme",
+  "homepage": "https://github.com/supportmailapp/global-types#readme",
   "devDependencies": {
     "discord.js": "^14.18.0",
     "mongoose": "^8.10.1"

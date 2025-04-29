@@ -64,7 +64,7 @@ export type CustomMessageDocument = HydratedDocument<ICustomMessage>;
 
 export type PausedUntil = {
   value: boolean;
-  date: Date;
+  date: Date | null;
 };
 
 export interface ITicketConfig {

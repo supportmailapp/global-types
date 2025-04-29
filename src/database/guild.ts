@@ -62,9 +62,14 @@ export interface ICustomMessage {
 
 export type CustomMessageDocument = HydratedDocument<ICustomMessage>;
 
+export type PausedUntil = {
+  value: boolean;
+  date: Date;
+};
+
 export interface ITicketConfig {
   enabled: boolean;
-  pausedUntil?: string | null; // ISO timestamp if the date + time when it should resume
+  pausedUntil?: PausedUntil | null;
   forumId?: string;
   tags?: IStatusTags;
   anonym: IAnonym;
@@ -97,7 +102,7 @@ export interface ReportLimitsConfig {
 
 export interface IReportConfig {
   enabled: boolean;
-  pausedUntil?: Date; // ISO timestamp if the date + time when it should resume
+  pausedUntil?: PausedUntil | null;
   channelId?: string;
   actionsEnabled: boolean;
   channels?: ReportChannelSettings;

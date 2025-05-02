@@ -1,5 +1,3 @@
-import { HydratedDocument } from "mongoose";
-
 /**
  * The options for the grant code - a simple object. Every value that is true should be granted.
  */
@@ -61,8 +59,8 @@ export interface IPremiumCode {
    * The date when the code expires.
    */
   expiresAt?: Date;
-  createdAt: NativeDate;
-  updatedAt: NativeDate;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 /**
@@ -72,4 +70,3 @@ export interface IPremiumCode {
  * 3. JWT is created with the _id in the payload and signed with the secret
  * 4. Respond with the JWT.
  */
-export type PremiumCodeDocument = HydratedDocument<IPremiumCode>;

@@ -1,23 +1,9 @@
-import { TextInputStyle } from "discord.js";
-import { HydratedDocument } from "mongoose";
 import {
-  BlacklistEntryType,
+  EntityType,
   NotificationLevel,
   SpecialReportChannelType,
 } from "../utils/enums.js";
-
-export interface ICustomModalField {
-  /** Min: 1 | Max: 5 */
-  position: number;
-  label: string;
-  placeholder?: string;
-  style: TextInputStyle;
-  minL?: number;
-  maxL?: number;
-  _required: boolean;
-}
-
-export type CustomModalFieldDocument = HydratedDocument<ICustomModalField>;
+import { Entity, ICustomModalField } from "../utils/helperTypes.js";
 
 export interface IFeedbackTags {
   [key: string]: string | undefined;
@@ -54,14 +40,6 @@ export interface IStatusTags {
   awaitingRes?: string;
 }
 
-export interface ICustomMessage {
-  content?: string;
-  color?: number;
-  image?: string;
-}
-
-export type CustomMessageDocument = HydratedDocument<ICustomMessage>;
-
 export type PausedUntil = {
   value: boolean;
   date: Date | null;
@@ -74,9 +52,6 @@ export interface ITicketConfig {
   tags?: IStatusTags;
   anonym: IAnonym;
   autoForwarding: boolean;
-  creationMessage?: ICustomMessage;
-  closeMessage?: ICustomMessage;
-  pings?: ["@" | "@&", string][]; // [ [ "prefix", "id" ] ]
   allowedBots?: string[];
   feedback?: IFeedbackConfig;
 }
@@ -106,9 +81,9 @@ export interface IReportConfig {
   channelId?: string;
   actionsEnabled: boolean;
   channels?: ReportChannelSettings;
-  pings?: ["@" | "@&", string][];
-  immune?: ["@" | "@&", string][];
-  mods?: ["@" | "@&", string][];
+  pings?: Entity[];
+  immune?: Entity[];
+  mods?: Entity[];
   limits?: ReportLimitsConfig;
   notificationLevel?: NotificationLevel;
 }
@@ -128,7 +103,7 @@ export interface IGuildFlags {
   partner: boolean;
 }
 
-export type BlacklistImmunityEntry = [BlacklistEntryType, string]; // [ type, "id" ]
+export type BlacklistImmunityEntry = [EntityType, string]; // [ type, "id" ]
 
 export interface IDBGuild {
   /**
@@ -142,7 +117,5 @@ export interface IDBGuild {
   reportConfig: IReportConfig;
   blacklistImmune?: BlacklistImmunityEntry[]; // [ [ type, "id" ] ]
   flags: IGuildFlags;
-  createdAt: NativeDate;
+  createdAt: Date;
 }
-
-export type DBGuildDocument = HydratedDocument<IDBGuild>;

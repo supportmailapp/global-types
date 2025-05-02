@@ -1,5 +1,3 @@
-import { HydratedDocument } from "mongoose";
-
 export interface IDBUser {
   id: string;
   language: string;
@@ -14,8 +12,6 @@ export interface IDBUser {
    * `JWTEncoded<{ at: string, rt: string }>`
    */
   tokens?: string;
-  updatedAt: NativeDate;
-  createdAt: NativeDate;
+  updatedAt: Date;
+  createdAt: Date;
 }
-
-export type DBUserDocument = HydratedDocument<IDBUser>;

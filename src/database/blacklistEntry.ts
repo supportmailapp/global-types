@@ -1,5 +1,4 @@
-import { HydratedDocument } from "mongoose";
-import { BlacklistEntryType, BlacklistModule } from "../utils/enums.js";
+import { BlacklistModule, EntityType } from "../utils/enums.js";
 
 export interface IBlacklistEntry {
   /**
@@ -13,7 +12,7 @@ export interface IBlacklistEntry {
    * - 2 = user
    * - 3 = guild
    */
-  _type: BlacklistEntryType;
+  _type: EntityType;
   /**
    * The guild ID where the entity is blacklisted
    */
@@ -28,8 +27,6 @@ export interface IBlacklistEntry {
    * - `4` = tags
    */
   _module: BlacklistModule;
-  updatedAt: NativeDate;
-  createdAt: NativeDate;
+  updatedAt: Date;
+  createdAt: Date;
 }
-
-export type BlacklistEntryDocument = HydratedDocument<IBlacklistEntry>;

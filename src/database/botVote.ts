@@ -1,5 +1,3 @@
-import { HydratedDocument } from "mongoose";
-
 export interface IBotVote {
   userId: string;
   botId: string;
@@ -16,5 +14,3 @@ export interface IBotVote {
    */
   removeRoleBy?: Date | undefined;
 }
-
-export type BotVoteDocument = HydratedDocument<IBotVote>;

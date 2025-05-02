@@ -1,4 +1,3 @@
-import { HydratedDocument } from "mongoose";
 import { TicketState, TicketStatus } from "../utils/enums.js";
 
 /**
@@ -28,8 +27,6 @@ export interface ITicket {
   lastActive: string; // For sorting purposes
   feedback?: IFeedback;
   stateTag?: TicketState; // For tag management (indicates which tag should be applied atm)
-  createdAt: NativeDate;
+  createdAt: Date;
   updateAt: Date;
 }
-
-export type DBTicketDocument = HydratedDocument<ITicket>;

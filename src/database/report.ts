@@ -1,4 +1,3 @@
-import { HydratedDocument } from "mongoose";
 import { ReportStatus } from "../utils/enums.js";
 
 export interface IReport {
@@ -12,8 +11,6 @@ export interface IReport {
   status: ReportStatus;
   comment?: string;
   resolvedBy?: string;
-  createdAt: NativeDate;
-  updatedAt: NativeDate;
+  createdAt: Date;
+  updatedAt: Date;
 }
-
-export type DBReportDocument = HydratedDocument<IReport>;

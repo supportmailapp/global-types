@@ -1,7 +1,7 @@
-import { APIContainerComponent } from "discord.js";
+import { SMAPIContainerComponent } from "../utils/helperTypes";
 
 export interface ICustomMessage {
   guildId: string;
   name: string;
-  containerData: APIContainerComponent;
+  containerData: SMAPIContainerComponent;
 }

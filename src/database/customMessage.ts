@@ -1,24 +1,7 @@
-import { SMAPISectionComponent } from "../utils/helperTypes";
+import { SMAPIMessageTopLevelComponent } from "../utils/helperTypes";
 
 /**
  * Interface representing a custom message in the database.
- *
- * A result of this should be a container for a Discord message.
- *
- * ### Parse this to:
- * ```ts
- * {
- *   flags: 32768, // djs: MessageFlags.IsComponentsV2
- *   components: [
- *     {
- *       type: 17,
- *       components: sections,
- *       accent_color: accent_color,
- *       spoiler: spoiler,
- *     }
- *   ]
- * }
- * ```
  */
 export interface ICustomMessage {
   guildId: string;
@@ -29,17 +12,11 @@ export interface ICustomMessage {
    */
   name: string;
   /**
-   * The custom message content.
-   */
-  sections: SMAPISectionComponent[];
-  /**
-   * The accent color of the container.
+   * All components used in the message.
    *
-   * If not set or null, no color will be applied.
+   * @see {@link https://discord.com/developers/docs/components/reference#anatomy-of-a-component}
+   *
+   * It's way too cimplicated to use the original type, so it's just an object here.
    */
-  accent_color?: number | null;
-  /**
-   * Whether the container should be marked as a spoiler.
-   */
-  spoiler?: boolean;
+  components: SMAPIMessageTopLevelComponent[];
 }

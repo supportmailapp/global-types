@@ -1,11 +1,12 @@
-import {
-  type APIComponentInContainer,
-  type APIMediaGalleryComponent,
-  type APIActionRowComponent,
-  type APIButtonComponentWithURL,
-  type APIComponentInMessageActionRow,
-  type APIUnfurledMediaItem,
-  type APIContainerComponent,
+import type {
+  APIComponentInContainer,
+  APIMediaGalleryComponent,
+  APIActionRowComponent,
+  APIButtonComponentWithURL,
+  APIComponentInMessageActionRow,
+  APIUnfurledMediaItem,
+  APIContainerComponent,
+  APISectionComponent,
 } from "discord-api-types/v10";
 import type { TextInputStyle } from "discord.js";
 import { EntityType } from "./enums";
@@ -32,12 +33,16 @@ export interface ICustomModalField {
   _required: boolean;
 }
 
-type APIComponentInContainerWithoutMediaGallery = Exclude<
+type ReducedAPIComponentInContainer = Exclude<
   APIComponentInContainer,
   | APIMediaGalleryComponent
   | APIActionRowComponent<APIComponentInMessageActionRow>
-  | APIUnfurledMediaItem
 >;
+
+type ReducedAPIUnfurledMediaItem = Pick<APIUnfurledMediaItem, "url">;
+type SMAPIMediaGalleryComponent = Omit<APIMediaGalleryComponent, "items"> & {
+  items: ReducedAPIUnfurledMediaItem[];
+};
 
 // Create the final type
 /**
@@ -45,20 +50,24 @@ type APIComponentInContainerWithoutMediaGallery = Exclude<
  *
  * This is a bit different from the original Discord API type, as it excludes certain components that are not used in the app.
  *
- * - Removed are:
- *   - `APIMediaGalleryComponent` - Media gallery component
- *   - `APIUnfurledMediaItem` - Unfurled media item component
- * - Modified is the `APIActionRowComponent<APIComponentInMessageActionRow>` - It can now only hold `APIButtonComponentWithURL` components.
+ * - Removed is `APIUnfurledMediaItem` - Unfurled media item component
+ * - Modified are:
+ *   - `APIActionRowComponent<APIComponentInMessageActionRow>` - It can now only hold `APIButtonComponentWithURL` components.
+ *   - `APIMediaGalleryComponent` - It can now only hold `ReducedAPIUnfurledMediaItem` components. (basically just the URL)
  *
- * @see {@link APIComponentInContainer}
- * @see {@link APIActionRowComponent}
- * @see {@link APIButtonComponentWithURL}
- * @see {@link APIMediaGalleryComponent}
- * @see {@link APIUnfurledMediaItem}
- * @see {@link APIComponentInMessageActionRow}
+ * Original: {@link APIComponentInContainer}
+ *
+ * References:
+ * @see
+ * - {@link APIActionRowComponent}
+ * - {@link APIButtonComponentWithURL}
+ * - {@link APIMediaGalleryComponent}
+ * - {@link APIUnfurledMediaItem}
+ * - {@link APIComponentInMessageActionRow}
  */
 export type SMAPIComponentInContainer =
-  | APIComponentInContainerWithoutMediaGallery
+  | ReducedAPIComponentInContainer
+  | SMAPIMediaGalleryComponent
   | APIActionRowComponent<APIButtonComponentWithURL>;
 
 /**
@@ -71,4 +80,23 @@ export type SMAPIContainerComponent = Omit<
   "components"
 > & {
   components: SMAPIComponentInContainer[];
+};
+
+/**
+ * A type specialized for the SupportMail app.
+ *
+ * @see {@link APISectionComponent}
+ *
+ * Parse to:
+ * ```ts
+ * {
+ *   components: textDisplays,
+ *   accessory: button | thumbnail,
+ * }
+ * ```
+ */
+export type SMAPISectionComponent = {
+  textDisplays?: string[];
+  button?: APIButtonComponentWithURL[];
+  thumbnail?: Pick<APIUnfurledMediaItem, "url">;
 };

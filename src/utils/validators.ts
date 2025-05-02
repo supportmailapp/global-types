@@ -1,26 +1,29 @@
 // Components V2 validators
 
-class ComponentsV2ValidatorError extends Error {
-  constructor(message: string) {
-    super(message);
-    this.name = "ComponentsV2ValidatorError";
-  }
-}
-
-import { ButtonStyle, ComponentType } from "discord-api-types/v10";
+import {
+  APIActionRowComponent,
+  APIComponentInMessageActionRow,
+  APIContainerComponent,
+  APIFileComponent,
+  APIMediaGalleryComponent,
+  APIMessageTopLevelComponent,
+  APISectionComponent,
+  ButtonStyle,
+  ComponentType,
+  SeparatorSpacingSize,
+} from "discord-api-types/v10";
 import { z } from "zod";
-import { fromZodError } from "zod-validation-error";
+import { fromZodError, ValidationError } from "zod-validation-error";
+import { TopLevelMessageComponent } from "./helperTypes";
 
-export const refineURLPredicate =
-  (allowedProtocols: string[]) => (value: string) => {
-    // eslint-disable-next-line n/prefer-global/url
-    const url = new URL(value);
-    return allowedProtocols.includes(url.protocol);
-  };
+const refineURLPredicate = (allowedProtocols: string[]) => (value: string) => {
+  const url = new URL(value);
+  return allowedProtocols.includes(url.protocol);
+};
 
 const labelPredicate = z.string().min(1).max(80);
 
-export const emojiPredicate = z
+const emojiPredicate = z
   .object({
     id: z.string().optional(),
     name: z.string().min(2).max(32).optional(),
@@ -31,50 +34,89 @@ export const emojiPredicate = z
     message: "Either 'id' or 'name' must be provided",
   });
 
-const buttonPredicateBase = z.object({
-  type: z.literal(ComponentType.Button),
-  disabled: z.boolean().optional(),
-});
-
-const buttonLinkPredicate = buttonPredicateBase
-  .extend({
+const buttonLinkPredicate = z
+  .object({
+    type: z.literal(ComponentType.Button),
+    disabled: z.boolean().optional(),
     style: z.literal(ButtonStyle.Link),
     url: z
       .string()
       .url()
-      .refine(refineURLPredicate(["http:", "https:", "discord:"])),
+      .refine(refineURLPredicate(["http:", "https:"])),
     emoji: emojiPredicate.optional(),
     label: labelPredicate,
   })
   .strict();
 
-export const buttonPredicate = z.discriminatedUnion("style", [
-  buttonLinkPredicate,
-]);
+export const buttonPredicate = buttonLinkPredicate;
 
-export const actionRowPredicate = z.object({
+const actionRowPredicate = z.object({
   type: z.literal(ComponentType.ActionRow),
-  components: z.union([
-    z
-      .object({ type: z.literal(ComponentType.Button) })
-      .array()
-      .min(1)
-      .max(5),
-    z
-      .object({
-        type: z.union([
-          z.literal(ComponentType.ChannelSelect),
-          z.literal(ComponentType.MentionableSelect),
-          z.literal(ComponentType.RoleSelect),
-          z.literal(ComponentType.StringSelect),
-          z.literal(ComponentType.UserSelect),
-          // And this!
-          z.literal(ComponentType.TextInput),
-        ]),
-      })
-      .array()
-      .length(1),
+  components: z
+    .object({ type: z.literal(ComponentType.Button) })
+    .array()
+    .min(1)
+    .max(5),
+});
+
+const unfurledMediaItemPredicate = z.object({
+  url: z
+    .string()
+    .url()
+    .refine(refineURLPredicate(["http:", "https:"]), {
+      message:
+        "Invalid protocol for media URL. Must be http:, https:, or attachment:",
+    }),
+});
+
+export const thumbnailPredicate = z.object({
+  media: unfurledMediaItemPredicate,
+  description: z.string().min(1).max(1_024).nullish(),
+  spoiler: z.boolean().optional(),
+});
+
+export const separatorPredicate = z.object({
+  divider: z.boolean().optional(),
+  spacing: z.nativeEnum(SeparatorSpacingSize).optional(),
+});
+
+export const textDisplayPredicate = z.object({
+  content: z.string().min(1).max(4_000),
+});
+
+export const mediaGalleryItemPredicate = z.object({
+  media: unfurledMediaItemPredicate,
+  description: z.string().min(1).max(1_024).nullish(),
+  spoiler: z.boolean().optional(),
+});
+
+export const mediaGalleryPredicate = z.object({
+  items: z.array(mediaGalleryItemPredicate).min(1).max(10),
+});
+
+export const sectionPredicate = z.object({
+  components: z.array(textDisplayPredicate).min(1).max(3),
+  accessory: z.union([
+    z.object({ type: z.literal(ComponentType.Button) }),
+    z.object({ type: z.literal(ComponentType.Thumbnail) }),
   ]),
+});
+
+export const containerPredicate = z.object({
+  components: z
+    .array(
+      z.union([
+        actionRowPredicate,
+        mediaGalleryPredicate,
+        sectionPredicate,
+        separatorPredicate,
+        textDisplayPredicate,
+      ])
+    )
+    .min(1)
+    .max(10),
+  spoiler: z.boolean().optional(),
+  accent_color: z.number().int().min(0).max(0xffffff).nullish(),
 });
 
 /**
@@ -96,4 +138,78 @@ export function validate<Validator extends z.ZodTypeAny>(
   }
 
   return result.data;
+}
+
+const ALLOWED_TLC_TYPES = [
+  ComponentType.ActionRow,
+  ComponentType.Section,
+  ComponentType.Container,
+  ComponentType.Separator,
+  ComponentType.TextDisplay,
+];
+
+export class V2ComponentsValidator {
+  private data: unknown;
+  constructor(data: any) {
+    this.data = data;
+  }
+
+  toJSON(): TopLevelMessageComponent[] {
+    const clone = structuredClone(this.data) as any[];
+
+    for (const component of clone) {
+      switch (component.type) {
+        case ComponentType.ActionRow:
+          this.validateActionRow(component);
+          break;
+        case ComponentType.Section:
+          this.validateSection(component);
+          break;
+        case ComponentType.Container:
+          this.validateContainer(component);
+          break;
+        case ComponentType.Separator:
+          validate(separatorPredicate, component);
+          break;
+        case ComponentType.TextDisplay:
+          validate(textDisplayPredicate, component);
+          break;
+        default:
+          throw new ValidationError(
+            `Invalid top-level component type (${
+              (component as any).type
+            }) - expected one of: ${ALLOWED_TLC_TYPES.join(", ")}.`
+          );
+      }
+    }
+
+    return clone;
+  }
+
+  private validateContainer(container: APIContainerComponent) {
+    // Basically the same as for a top-level component, but without the container type
+    const clone = structuredClone(container);
+
+    validate(containerPredicate, clone);
+  }
+
+  private validateSection(section: APISectionComponent) {
+    // Validate the section itself
+    validate(sectionPredicate, section);
+    // Just the accessory or thumbnail
+    if (section.accessory.type === ComponentType.Thumbnail) {
+      validate(thumbnailPredicate, section.accessory);
+    } else {
+      validate(buttonPredicate, section.accessory);
+    }
+  }
+
+  private validateActionRow(
+    row: APIActionRowComponent<APIComponentInMessageActionRow>
+  ) {
+    validate(actionRowPredicate, row);
+    for (const child of row.components) {
+      validate(buttonPredicate, child);
+    }
+  }
 }

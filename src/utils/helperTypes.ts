@@ -1,12 +1,16 @@
 import type {
-  APIComponentInContainer,
-  APIMediaGalleryComponent,
   APIActionRowComponent,
   APIButtonComponentWithURL,
+  APIComponentInContainer,
   APIComponentInMessageActionRow,
-  APIUnfurledMediaItem,
   APIContainerComponent,
+  APIFileComponent,
+  APIMediaGalleryComponent,
+  APIMessageTopLevelComponent,
   APISectionComponent,
+  APISeparatorComponent,
+  APITextDisplayComponent,
+  APIUnfurledMediaItem,
 } from "discord-api-types/v10";
 import type { TextInputStyle } from "discord.js";
 import { EntityType } from "./enums";
@@ -33,15 +37,21 @@ export interface ICustomModalField {
   _required: boolean;
 }
 
-type ReducedAPIComponentInContainer = Exclude<
+export type ReducedAPIComponentInContainer = Exclude<
   APIComponentInContainer,
   | APIMediaGalleryComponent
   | APIActionRowComponent<APIComponentInMessageActionRow>
 >;
 
-type ReducedAPIUnfurledMediaItem = Pick<APIUnfurledMediaItem, "url">;
-type SMAPIMediaGalleryComponent = Omit<APIMediaGalleryComponent, "items"> & {
-  items: ReducedAPIUnfurledMediaItem[];
+export type MediaItemURLOnly = Pick<APIUnfurledMediaItem, "url">;
+export type SMAPIFileComponent = Omit<APIFileComponent, "file"> & {
+  file: MediaItemURLOnly;
+};
+export type SMAPIMediaGalleryComponent = Omit<
+  APIMediaGalleryComponent,
+  "items"
+> & {
+  items: MediaItemURLOnly[];
 };
 
 // Create the final type
@@ -68,12 +78,18 @@ type SMAPIMediaGalleryComponent = Omit<APIMediaGalleryComponent, "items"> & {
 export type SMAPIComponentInContainer =
   | ReducedAPIComponentInContainer
   | SMAPIMediaGalleryComponent
-  | APIActionRowComponent<APIButtonComponentWithURL>;
+  | APIActionRowComponent<APIButtonComponentWithURL>
+  | SMAPIFileComponent;
 
 /**
- * A special container component that can only hold SMAPIComponentInContainer components.
- *
- * @see {@link SMAPIComponentInContainer}
+ * @see {@link APISectionComponent}
+ */
+export type SMAPISectionComponent = Omit<APISectionComponent, "accessory"> & {
+  accessory?: APIButtonComponentWithURL | MediaItemURLOnly;
+};
+
+/**
+ * A special container component holding all information about the container.
  */
 export type SMAPIContainerComponent = Omit<
   APIContainerComponent,
@@ -83,20 +99,14 @@ export type SMAPIContainerComponent = Omit<
 };
 
 /**
- * A type specialized for the SupportMail app.
+ * Modified version of the `APIMessageTopLevelComponent` type.
  *
- * @see {@link APISectionComponent}
- *
- * Parse to:
- * ```ts
- * {
- *   components: textDisplays,
- *   accessory: button | thumbnail,
- * }
- * ```
+ * @see {@link APIMessageTopLevelComponent}
  */
-export type SMAPISectionComponent = {
-  textDisplays?: string[];
-  button?: APIButtonComponentWithURL[];
-  thumbnail?: Pick<APIUnfurledMediaItem, "url">;
-};
+export type SMAPIMessageTopLevelComponent =
+  | APIActionRowComponent<APIButtonComponentWithURL>
+  | APISeparatorComponent
+  | APITextDisplayComponent
+  | SMAPIContainerComponent
+  | SMAPIMediaGalleryComponent
+  | SMAPISectionComponent;

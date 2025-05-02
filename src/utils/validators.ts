@@ -7,12 +7,7 @@ class ComponentsV2ValidatorError extends Error {
   }
 }
 
-import {
-  ButtonStyle,
-  ChannelType,
-  ComponentType,
-  SelectMenuDefaultValueType,
-} from "discord-api-types/v10";
+import { ButtonStyle, ComponentType } from "discord-api-types/v10";
 import { z } from "zod";
 import { fromZodError } from "zod-validation-error";
 
@@ -87,7 +82,6 @@ export const actionRowPredicate = z.object({
  *
  * @param validator - The zod validator to use
  * @param value - The value to parse
- * @param validationOverride - Force validation to run/not run regardless of your global preference
  * @returns The result from parsing
  * @internal
  */

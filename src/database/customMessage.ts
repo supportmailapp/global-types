@@ -1,4 +1,4 @@
-import { SMAPIMessageTopLevelComponent } from "../utils/helperTypes";
+import { TopLevelMessageComponent } from "../utils/helperTypes";
 
 /**
  * Interface representing a custom message in the database.
@@ -18,5 +18,5 @@ export interface ICustomMessage {
    *
    * It's way too cimplicated to use the original type, so it's just an object here.
    */
-  components: SMAPIMessageTopLevelComponent[];
+  components: TopLevelMessageComponent[];
 }

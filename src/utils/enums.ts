@@ -29,12 +29,6 @@ export enum BlacklistModule {
   tags = 4,
 }
 
-export enum BlacklistEntryType {
-  role = 0,
-  user = 1,
-  guild = 2,
-}
-
 export enum LogModule {
   Ticket = "ticket",
   Report = "report",
@@ -120,4 +114,13 @@ export enum SetupTicketsErrorCode {
   MissingPermissions = 0,
   CategoryCreateFailed = 1,
   ForumCreateFailed = 2,
+}
+
+/**
+ * An enum representing the type of entity.
+ */
+export enum EntityType {
+  role = 0,
+  user = 1,
+  guild = 2,
 }

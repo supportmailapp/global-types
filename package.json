@@ -1,23 +1,10 @@
 {
   "name": "supportmail-types",
-  "version": "1.4.1",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/supportmailapp/global-types.git"
-  },
-  "keywords": [],
+  "private": true,
+  "version": "1.5.0",
   "author": "The-LukeZ",
   "license": "",
   "type": "module",
-  "bugs": {
-    "url": "https://github.com/supportmailapp/global-types/issues"
-  },
-  "homepage": "https://github.com/supportmailapp/global-types#readme",
-  "devDependencies": {
-    "discord-api-types": "^0.38.2",
-    "discord.js": "^14.19.2",
-    "mongoose": "^8.14.1"
-  },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
@@ -26,5 +13,22 @@
   "scripts": {
     "build": "tsc",
     "prepare": "npm run build"
-  }
+  },
+  "dependencies": {
+    "@discordjs/builders": "^1.11.1",
+    "discord-api-types": "^0.38.2"
+  },
+  "devDependencies": {
+    "discord.js": "^14.19.2",
+    "mongoose": "^8.14.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/supportmailapp/global-types.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/supportmailapp/global-types/issues"
+  },
+  "homepage": "https://github.com/supportmailapp/global-types#readme"
 }

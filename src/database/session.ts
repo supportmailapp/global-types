@@ -3,7 +3,12 @@ import { Schema, model } from "mongoose";
 export interface ISession {
   _id: Schema.Types.ObjectId;
   userId: string;
-  token: string; // Random session token (not JWT)
+  /**
+   * JWT encoded tokens.
+   *
+   * `JWTEncoded<{ at: string, rt: string }>`
+   */
+  tokens?: string;
   expiresAt: Date;
   lastActivity: Date;
   userAgent?: string;
@@ -17,11 +22,9 @@ const sessionSchema = new Schema<ISession>({
     required: true,
     index: true,
   },
-  token: {
+  tokens: {
     type: String,
     required: true,
-    unique: true,
-    index: true,
   },
   expiresAt: {
     type: Date,

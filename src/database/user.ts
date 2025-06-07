@@ -1,17 +1,16 @@
+import type { ISession } from "./session";
+
 export interface IDBUser {
   id: string;
   language: string;
   autoRedirect: boolean;
   t_left: number;
   tips: boolean;
-  /** @deprecated Use `tokens` instead. */
+  /** @deprecated
+   * - Use `Session.tokens` instead.
+   * {@link ISession}
+   * */
   accessToken?: string;
-  /**
-   * JWT encoded tokens.
-   *
-   * `JWTEncoded<{ at: string, rt: string }>`
-   */
-  tokens?: string;
   updatedAt: Date;
   createdAt: Date;
 }

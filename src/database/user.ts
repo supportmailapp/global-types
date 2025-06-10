@@ -1,5 +1,3 @@
-import type { ISession } from "./session";
-
 export interface IDBUser {
   id: string;
   language: string;
@@ -7,8 +5,7 @@ export interface IDBUser {
   t_left: number;
   tips: boolean;
   /** @deprecated
-   * - Use `Session.tokens` instead.
-   * {@link ISession}
+   * - Use `UserToken` Schema instead.
    * */
   accessToken?: string;
   updatedAt: Date;

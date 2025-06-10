@@ -14,6 +14,6 @@ export * from "./database/premiumCode.js";
 export * from "./database/botVote.js";
 export * from "./database/ticketCategories.js";
 export * from "./database/customMessage.js";
-export * from "./database/session.js";
+export * from "./database/userTokens.js";
 
 export * from "./api/errors.js";

@@ -54,6 +54,7 @@ export interface ITicketConfig {
   autoForwarding: boolean;
   allowedBots?: string[];
   feedback?: IFeedbackConfig;
+  pings?: ["@" | "@&", string][];
 }
 
 export type ISpecialReportChannel = {

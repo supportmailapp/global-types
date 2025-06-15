@@ -1,16 +1,7 @@
 import type {
-  APIActionRowComponent,
-  APIButtonComponentWithURL,
-  APIComponentInContainer,
-  APIComponentInMessageActionRow,
-  APIContainerComponent,
   APIFileComponent,
   APIMediaGalleryComponent,
   APIMessageTopLevelComponent,
-  APISectionComponent,
-  APISeparatorComponent,
-  APITextDisplayComponent,
-  APIUnfurledMediaItem,
 } from "discord-api-types/v10";
 import type { TextInputStyle } from "discord.js";
 import { EntityType } from "./enums";

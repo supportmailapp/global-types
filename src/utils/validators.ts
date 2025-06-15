@@ -1,20 +1,17 @@
 // Components V2 validators
 
 import {
-  APIActionRowComponent,
-  APIComponentInMessageActionRow,
-  APIContainerComponent,
-  APIFileComponent,
-  APIMediaGalleryComponent,
-  APIMessageTopLevelComponent,
-  APISectionComponent,
   ButtonStyle,
   ComponentType,
   SeparatorSpacingSize,
+  type APIActionRowComponent,
+  type APIComponentInMessageActionRow,
+  type APIContainerComponent,
+  type APISectionComponent,
 } from "discord-api-types/v10";
 import { z } from "zod";
 import { fromZodError, ValidationError } from "zod-validation-error";
-import { TopLevelMessageComponent } from "./helperTypes";
+import type { TopLevelMessageComponent } from "./helperTypes";
 
 const refineURLPredicate = (allowedProtocols: string[]) => (value: string) => {
   const url = new URL(value);

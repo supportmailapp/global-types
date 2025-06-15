@@ -58,7 +58,7 @@ export interface ITicketConfig {
   autoForwarding: boolean;
   allowedBots?: string[];
   feedback?: IFeedbackConfig;
-  pings?: ["@" | "@&", string][];
+  pings?: Entity[];
   creationMessage?: ICustomMessage;
   closeMessage?: ICustomMessage;
 }

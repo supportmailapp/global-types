@@ -4,9 +4,9 @@ import {
   SpecialReportChannelType,
 } from "../utils/enums.js";
 import {
-  Entity,
   ICustomMessage,
   ICustomModalField,
+  MentionableEntity,
 } from "../utils/helperTypes.js";
 
 export interface IFeedbackTags {
@@ -58,7 +58,7 @@ export interface ITicketConfig {
   autoForwarding: boolean;
   allowedBots?: string[];
   feedback?: IFeedbackConfig;
-  pings?: Entity[];
+  pings?: MentionableEntity[];
   creationMessage?: ICustomMessage;
   closeMessage?: ICustomMessage;
 }
@@ -88,9 +88,9 @@ export interface IReportConfig {
   channelId?: string;
   actionsEnabled: boolean;
   channels?: ReportChannelSettings;
-  pings?: Entity[];
-  immune?: Entity[];
-  mods?: Entity[];
+  pings?: MentionableEntity[];
+  immune?: MentionableEntity[];
+  mods?: MentionableEntity[];
   limits?: ReportLimitsConfig;
   notificationLevel?: NotificationLevel;
 }

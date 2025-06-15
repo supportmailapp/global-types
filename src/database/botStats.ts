@@ -1,5 +1,6 @@
 export interface IBotStats {
-  serverCount: number;
+  guilds: number;
   tickets: number;
-  timestamp: Date;
+  createdAt: Date; // MongoDB will automatically set this
+  updatedAt: Date; // MongoDB will automatically set this
 }

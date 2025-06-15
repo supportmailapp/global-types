@@ -60,6 +60,7 @@ export interface ITicketConfig {
   feedback?: IFeedbackConfig;
   pings?: ["@" | "@&", string][];
   creationMessage?: ICustomMessage;
+  closeMessage?: ICustomMessage;
 }
 
 export type ISpecialReportChannel = {

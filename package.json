@@ -1,7 +1,7 @@
 {
   "name": "supportmail-types",
   "private": true,
-  "version": "1.7.6",
+  "version": "1.7.7",
   "author": "The-LukeZ",
   "license": "",
   "type": "module",
@@ -12,7 +12,8 @@
   ],
   "scripts": {
     "build": "tsc",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "prepack": "npm run build"
   },
   "dependencies": {
     "discord-api-types": "^0.38.11",

@@ -14,6 +14,7 @@ export type Entity<T extends EntityType> = {
 export type UserEntity = Entity<EntityType.user>;
 export type GuildEntity = Entity<EntityType.guild>;
 export type RoleEntity = Entity<EntityType.role>;
+export type MentionableEntity = UserEntity | RoleEntity;
 export type AnyEntity = UserEntity | GuildEntity | RoleEntity;
 
 export type IPartialEmoji = {

@@ -6,10 +6,15 @@ import type {
 import type { TextInputStyle } from "discord.js";
 import { EntityType } from "./enums";
 
-export type Entity = {
-  typ: EntityType;
+export type Entity<T extends EntityType> = {
+  typ: T;
   id: string;
 };
+
+export type UserEntity = Entity<EntityType.user>;
+export type GuildEntity = Entity<EntityType.guild>;
+export type RoleEntity = Entity<EntityType.role>;
+export type AnyEntity = UserEntity | GuildEntity | RoleEntity;
 
 export type IPartialEmoji = {
   name: string;

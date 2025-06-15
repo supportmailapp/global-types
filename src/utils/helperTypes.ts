@@ -32,3 +32,18 @@ export type TopLevelMessageComponent = Exclude<
   APIMessageTopLevelComponent,
   APIFileComponent | APIMediaGalleryComponent
 >;
+
+export type ICustomMessage = {
+  /**
+   * The content of the message.
+   */
+  content?: string;
+  /**
+   * The integer of the hex-color to use for the embed.
+   */
+  color?: number;
+  /**
+   * The URL to the image to use as the large embed image.
+   */
+  image?: string;
+};

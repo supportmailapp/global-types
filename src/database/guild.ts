@@ -3,7 +3,11 @@ import {
   NotificationLevel,
   SpecialReportChannelType,
 } from "../utils/enums.js";
-import { Entity, ICustomModalField } from "../utils/helperTypes.js";
+import {
+  Entity,
+  ICustomMessage,
+  ICustomModalField,
+} from "../utils/helperTypes.js";
 
 export interface IFeedbackTags {
   [key: string]: string | undefined;
@@ -55,6 +59,7 @@ export interface ITicketConfig {
   allowedBots?: string[];
   feedback?: IFeedbackConfig;
   pings?: ["@" | "@&", string][];
+  creationMessage?: ICustomMessage;
 }
 
 export type ISpecialReportChannel = {

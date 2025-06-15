@@ -15,5 +15,6 @@ export * from "./database/botVote.js";
 export * from "./database/ticketCategories.js";
 export * from "./database/customMessage.js";
 export * from "./database/userTokens.js";
+export * from "./database/botStats.js";
 
 export * from "./api/errors.js";

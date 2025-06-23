@@ -52,7 +52,7 @@ export type PausedUntil = {
 export interface ITicketConfig {
   enabled: boolean;
   pausedUntil?: PausedUntil | null;
-  forumId?: string;
+  forumId: string | null;
   tags?: IStatusTags;
   anonym: IAnonym;
   autoForwarding: boolean;
@@ -85,7 +85,7 @@ export interface ReportLimitsConfig {
 export interface IReportConfig {
   enabled: boolean;
   pausedUntil?: PausedUntil | null;
-  channelId?: string;
+  channelId: string | null;
   actionsEnabled: boolean;
   channels?: ReportChannelSettings;
   pings?: MentionableEntity[];

@@ -61,6 +61,12 @@ export interface ITicketConfig {
   pings?: MentionableEntity[];
   creationMessage?: ICustomMessage;
   closeMessage?: ICustomMessage;
+  /**
+   * Webhook ID for the log in a ticket post when a /send command is used.
+   *
+   * This is used to log the message in the ticket post when a mod sends a message using the `/send` command.
+   */
+  webhookDocId?: string;
 }
 
 export type ISpecialReportChannel = {

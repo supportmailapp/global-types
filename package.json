@@ -1,7 +1,7 @@
 {
   "name": "supportmail-types",
   "private": true,
-  "version": "1.7.13",
+  "version": "1.7.14",
   "author": "The-LukeZ",
   "license": "",
   "type": "module",
@@ -16,13 +16,13 @@
     "prepack": "npm run build"
   },
   "dependencies": {
-    "discord-api-types": "^0.38.11",
+    "discord-api-types": "^0.38.13",
     "zod": "^3.24.3",
     "zod-validation-error": "^3.4.0"
   },
   "devDependencies": {
     "discord.js": "^14.19.2",
-    "mongoose": "^8.14.1"
+    "mongoose": "^8.16.0"
   },
   "repository": {
     "type": "git",

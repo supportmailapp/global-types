@@ -1,4 +1,4 @@
-import { BlacklistModule, EntityType } from "../utils/enums.js";
+import { BlacklistScope, EntityType } from "../utils/enums.js";
 
 export interface IBlacklistEntry {
   /**
@@ -21,7 +21,7 @@ export interface IBlacklistEntry {
    * @deprecated
    * Use {@link scope} instead.
    */
-  _module: BlacklistModule;
+  _module: BlacklistScope;
   /**
    * Indicates from what the user is restricted.
    *
@@ -31,7 +31,7 @@ export interface IBlacklistEntry {
    * - `3` = reports
    * - `4` = tags
    */
-  scope: BlacklistModule;
+  scope: BlacklistScope;
   updatedAt: Date;
   createdAt: Date;
 }

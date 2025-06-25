@@ -21,7 +21,7 @@ export enum NotificationLevel {
   Full = 4,
 }
 
-export enum BlacklistModule {
+export enum BlacklistScope {
   global = 0,
   all = 1,
   tickets = 2,

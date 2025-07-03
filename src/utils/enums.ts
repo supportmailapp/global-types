@@ -1,24 +1,7 @@
-export enum NotificationLevel {
-  /**
-   * ... nothing
-   */
-  None = 0,
-  /**
-   * "Your report has been accepted."
-   */
-  Anonym = 1,
-  /**
-   * "Your report has been accepted." + [Report Details]
-   */
-  OnlyReport = 2,
-  /**
-   * "Your report has been accepted." + [Action Details]
-   */
-  OnlyAction = 3,
-  /**
-   * "Your report has been accepted." + [Report Details] + [Action Details]
-   */
-  Full = 4,
+export enum ReportNotificationType {
+  ActionTaken = 0,
+  ReportSummary = 1,
+  ModeratorInfo = 2,
 }
 
 export enum BlacklistScope {

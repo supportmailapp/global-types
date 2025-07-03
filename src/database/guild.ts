@@ -1,6 +1,6 @@
 import {
   EntityType,
-  NotificationLevel,
+  ReportNotificationType,
   SpecialReportChannelType,
 } from "../utils/enums.js";
 import {
@@ -98,7 +98,7 @@ export interface IReportConfig {
   immune?: MentionableEntity[];
   mods?: MentionableEntity[];
   limits?: ReportLimitsConfig;
-  notificationLevel?: NotificationLevel;
+  notificationLevel?: ReportNotificationType;
 }
 
 export interface IGuildFlags {

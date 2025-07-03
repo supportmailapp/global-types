@@ -98,7 +98,7 @@ export interface IReportConfig {
   immune?: MentionableEntity[];
   mods?: MentionableEntity[];
   limits?: ReportLimitsConfig;
-  notificationLevel?: ReportNotificationType;
+  notifications?: ReportNotificationType;
 }
 
 export interface IGuildFlags {

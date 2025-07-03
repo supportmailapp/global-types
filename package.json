@@ -1,7 +1,7 @@
 {
   "name": "supportmail-types",
   "private": true,
-  "version": "1.7.19",
+  "version": "1.7.20",
   "author": "The-LukeZ",
   "license": "",
   "type": "module",
@@ -21,7 +21,7 @@
     "zod-validation-error": "^3.4.0"
   },
   "devDependencies": {
-    "discord.js": "^14.19.2",
+    "discord.js": "^14.21.0",
     "mongoose": "^8.16.0"
   },
   "repository": {

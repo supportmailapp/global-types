@@ -1,4 +1,9 @@
-import { Entity, ICustomModalField, IPartialEmoji } from "../utils/helperTypes";
+import {
+  Entity,
+  ICustomModalField,
+  IPartialEmoji,
+  MentionableEntity,
+} from "../utils/helperTypes";
 
 export interface ITicketCategory {
   /**
@@ -33,7 +38,7 @@ export interface ITicketCategory {
   /**
    * Optional array of entities to ping when a ticket of this category is created.
    */
-  pings?: Entity[];
+  pings?: MentionableEntity[];
   /**
    * Custom Modal fields to be displayed in the ticket creation modal.
    */

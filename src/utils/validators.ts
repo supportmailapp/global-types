@@ -4,9 +4,6 @@ import {
   APIActionRowComponent,
   APIComponentInMessageActionRow,
   APIContainerComponent,
-  APIFileComponent,
-  APIMediaGalleryComponent,
-  APIMessageTopLevelComponent,
   APISectionComponent,
   ButtonStyle,
   ComponentType,
@@ -15,6 +12,7 @@ import {
 import { z } from "zod";
 import { fromZodError, ValidationError } from "zod-validation-error";
 import { TopLevelMessageComponent } from "./helperTypes";
+import { JSONEncodable } from "discord.js";
 
 const refineURLPredicate = (allowedProtocols: string[]) => (value: string) => {
   const url = new URL(value);
@@ -150,7 +148,7 @@ const ALLOWED_TLC_TYPES = [
 
 export class V2ComponentsValidator {
   private data: unknown;
-  constructor(data: any) {
+  constructor(data: JSONEncodable<TopLevelMessageComponent>) {
     this.data = data;
   }
 

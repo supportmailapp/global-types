@@ -1,76 +1,15 @@
-export enum NotificationLevel {
-  /**
-   * ... nothing
-   */
-  None = 0,
-  /**
-   * "Your report has been accepted."
-   */
-  Anonym = 1,
-  /**
-   * "Your report has been accepted." + [Report Details]
-   */
-  OnlyReport = 2,
-  /**
-   * "Your report has been accepted." + [Action Details]
-   */
-  OnlyAction = 3,
-  /**
-   * "Your report has been accepted." + [Report Details] + [Action Details]
-   */
-  Full = 4,
+export enum ReportNotificationType {
+  ActionTaken = 0,
+  ReportSummary = 1,
+  ModeratorInfo = 2,
 }
 
-export enum BlacklistModule {
+export enum BlacklistScope {
   global = 0,
   all = 1,
   tickets = 2,
   reports = 3,
   tags = 4,
-}
-
-export enum LogModule {
-  Ticket = "ticket",
-  Report = "report",
-  Blacklist = "blacklist",
-}
-
-export enum LogTypes {
-  // TicketLogType
-  createTicket = 1001,
-  closeTicket = 1002,
-  deleteTicket = 1003,
-  reopenTicket = 1004,
-  closeRequested = 1005,
-  closeAccepted = 1006,
-  closeDenied = 1007,
-  closeRequestDeleted = 1008,
-  ticketPingsUpdated = 1009,
-  messageForwardingToggled = 1010,
-  ticketAnonymityUpdated = 1011,
-  allowedTicketBotsUpdated = 1012,
-  ticketUserFeedbackUpdated = 1013,
-  pausedTickets = 1014,
-  resumedTickets = 1015,
-
-  // ReportLogType
-  createReport = 2001,
-  updateReport = 2002,
-  deleteReport = 2003,
-  reportsChannelUpdated = 2004,
-  reportPingsUpdated = 2005,
-  reportImmunityUpdated = 2006,
-  modRolesUpdated = 2007,
-  reportingChannelsUpdated = 2008,
-  reportButtonsToggled = 2009,
-  pausedReports = 2010,
-  resumedReports = 2011,
-
-  // BlacklistLogType
-  addToBlacklist = 3001, // Someone was added to a blacklist
-  removeFromBlacklist = 3002, // Someone was removed from a blacklist
-  clearBlacklist = 3003, // When blacklist is cleared
-  blacklistImmunityUpdated = 3004, // When immunity is updated
 }
 
 export enum ReportStatus {
@@ -110,10 +49,13 @@ export enum BillingPeriod {
   oneYear = 5,
 }
 
-export enum SetupTicketsErrorCode {
+export enum ClientAPIErrorCodes {
   MissingPermissions = 0,
   CategoryCreateFailed = 1,
-  ForumCreateFailed = 2,
+  ForumCreationFailed = 2,
+  GuildNotFound = 3,
+  CommunityNotEnabled = 4,
+  CategoryNotFound = 5,
 }
 
 /**
@@ -123,4 +65,13 @@ export enum EntityType {
   role = 0,
   user = 1,
   guild = 2,
+}
+
+export enum LogEventType {
+  TestEvent = "testEvent",
+
+  TicketCreated = "ticketCreate",
+  TicketClosed = "ticketClose",
+  TicketReopened = "ticketReopen",
+  TicketDeleted = "ticketDelete",
 }

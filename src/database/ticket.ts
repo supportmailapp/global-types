@@ -3,7 +3,7 @@ import { TicketState, TicketStatus } from "../utils/enums.js";
 /**
  * `{ [key: string]: string }` is a map of question position to answer
  */
-export type QuestionAnswer = Map<string, string>;
+export type QuestionAnswer = Record<string, string>;
 
 export interface IFeedback {
   stars: number;

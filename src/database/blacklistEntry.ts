@@ -1,4 +1,4 @@
-import { BlacklistModule, EntityType } from "../utils/enums.js";
+import { BlacklistScope, EntityType } from "../utils/enums.js";
 
 export interface IBlacklistEntry {
   /**
@@ -26,7 +26,7 @@ export interface IBlacklistEntry {
    * - `3` = reports
    * - `4` = tags
    */
-  _module: BlacklistModule;
+  scope: BlacklistScope;
   updatedAt: Date;
   createdAt: Date;
 }

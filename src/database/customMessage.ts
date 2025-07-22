@@ -16,7 +16,7 @@ export interface ICustomMessage {
    *
    * @see {@link https://discord.com/developers/docs/components/reference#anatomy-of-a-component}
    *
-   * It's way too cimplicated to use the original type, so it's just an object here.
+   * It's way too complicated to use the original type, so it's just an object here.
    */
   components: TopLevelMessageComponent[];
 }

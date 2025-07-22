@@ -1,9 +1,9 @@
 import {
   EntityType,
-  NotificationLevel,
+  ReportNotificationType,
   SpecialReportChannelType,
 } from "../utils/enums.js";
-import { Entity, ICustomModalField } from "../utils/helperTypes.js";
+import { ICustomModalField, MentionableEntity } from "../utils/helperTypes.js";
 
 export interface IFeedbackTags {
   [key: string]: string | undefined;
@@ -27,6 +27,9 @@ export interface IAnonym {
    */
   user: boolean;
   enabled: boolean;
+  /**
+   * @deprecated Not used currently. Will be re-enabled with premium.
+   */
   alias?: string;
 }
 
@@ -48,12 +51,18 @@ export type PausedUntil = {
 export interface ITicketConfig {
   enabled: boolean;
   pausedUntil?: PausedUntil | null;
-  forumId?: string;
+  forumId: string | null;
   tags?: IStatusTags;
   anonym: IAnonym;
   autoForwarding: boolean;
   allowedBots?: string[];
   feedback?: IFeedbackConfig;
+  /**
+   * Webhook ID for the log in a ticket post when a /send command is used.
+   *
+   * This is used to log the message in the ticket post when a mod sends a message using the `/send` command.
+   */
+  webhookDocId?: string;
 }
 
 export type ISpecialReportChannel = {
@@ -78,14 +87,14 @@ export interface ReportLimitsConfig {
 export interface IReportConfig {
   enabled: boolean;
   pausedUntil?: PausedUntil | null;
-  channelId?: string;
+  channelId: string | null;
   actionsEnabled: boolean;
   channels?: ReportChannelSettings;
-  pings?: Entity[];
-  immune?: Entity[];
-  mods?: Entity[];
+  pings?: MentionableEntity[];
+  immune?: MentionableEntity[];
+  mods?: MentionableEntity[];
   limits?: ReportLimitsConfig;
-  notificationLevel?: NotificationLevel;
+  notifications?: ReportNotificationType[];
 }
 
 export interface IGuildFlags {

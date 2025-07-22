@@ -4,9 +4,9 @@ export interface IDBUser {
   autoRedirect: boolean;
   t_left: number;
   tips: boolean;
-  /** @deprecated
-   * - Use `UserToken` Schema instead.
-   * */
+  /**
+   * @deprecated - Use `UserToken` Schema instead.
+   */
   accessToken?: string;
   updatedAt: Date;
   createdAt: Date;

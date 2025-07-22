@@ -148,7 +148,7 @@ const ALLOWED_TLC_TYPES = [
 
 export class V2ComponentsValidator {
   private data: unknown;
-  constructor(data: JSONEncodable<TopLevelMessageComponent>) {
+  constructor(data: any) {
     this.data = data;
   }
 

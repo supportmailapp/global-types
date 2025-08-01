@@ -6,7 +6,7 @@ import {
 import { ICustomModalField, MentionableEntity } from "../utils/helperTypes.js";
 
 export interface IFeedbackTags {
-  [key: string]: string | undefined;
+  [key: string]: string | undefined; // This missing means TS issues
   one?: string;
   two?: string;
   three?: string;
@@ -16,10 +16,10 @@ export interface IFeedbackTags {
 
 export interface IFeedbackConfig {
   /**
-   * @deprecated Not used after dashboard is done! Use `enabled` instead.
+   * @deprecated Not used after dashboard is done! Use `isEnabled` instead.
    */
   postId?: string;
-  enabled: boolean;
+  isEnabled: boolean;
   questions?: ICustomModalField[];
   thankYou?: string;
   tags?: IFeedbackTags;

@@ -16,9 +16,10 @@ export interface IFeedbackTags {
 
 export interface IFeedbackConfig {
   /**
-   * @deprecated Not used after dashboard is done!
+   * @deprecated Not used after dashboard is done! Use `enabled` instead.
    */
   postId?: string;
+  enabled: boolean;
   questions?: ICustomModalField[];
   thankYou?: string;
   tags?: IFeedbackTags;

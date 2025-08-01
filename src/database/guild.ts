@@ -15,6 +15,9 @@ export interface IFeedbackTags {
 }
 
 export interface IFeedbackConfig {
+  /**
+   * @deprecated Not used after dashboard is done!
+   */
   postId?: string;
   questions?: ICustomModalField[];
   thankYou?: string;

@@ -11,13 +11,14 @@
     "dist"
   ],
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "build": "tsc",
-    "prepare": "npm run build"
+    "prepare": "pnpm build"
   },
   "dependencies": {
     "discord-api-types": "^0.38.18",
     "zod": "^4.0.14",
-    "zod-validation-error": "^3.5.3"
+    "zod-validation-error": "^4.0.1"
   },
   "devDependencies": {
     "discord.js": "^14.21.0",
@@ -31,5 +32,6 @@
   "bugs": {
     "url": "https://github.com/supportmailapp/global-types/issues"
   },
-  "homepage": "https://github.com/supportmailapp/global-types#readme"
+  "homepage": "https://github.com/supportmailapp/global-types#readme",
+  "packageManager": "pnpm@10.14.0"
 }

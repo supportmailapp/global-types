@@ -31,5 +31,5 @@ export interface ITicket {
   feedback?: IFeedback;
   stateTag?: TicketState; // For tag management (indicates which tag should be applied atm)
   createdAt: Date;
-  updateAt: Date;
+  updatedAt: Date;
 }

@@ -1,7 +1,7 @@
 {
   "name": "supportmail-types",
   "private": true,
-  "version": "2.1.5",
+  "version": "2.1.6",
   "author": "The-LukeZ",
   "license": "",
   "type": "module",
@@ -12,12 +12,11 @@
   ],
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "build": "npx tsc",
+    "build": "tsc",
     "prepare": "pnpm build"
   },
   "dependencies": {
     "discord-api-types": "^0.38.18",
-    "tsc": "^2.0.4",
     "zod": "^4.0.14",
     "zod-validation-error": "^4.0.1"
   },

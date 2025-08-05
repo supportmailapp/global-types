@@ -75,3 +75,20 @@ export enum LogEventType {
   TicketReopened = "ticketReopen",
   TicketDeleted = "ticketDelete",
 }
+
+export enum UserRole {
+  /**
+   * Represents a regular user with no special permissions.
+   *
+   * This is the default role when no role is given.
+   */
+  User = 0,
+  /**
+   * Represents a user with administrative permissions.
+   */
+  Admin = 1,
+  /**
+   * Represents a user with permissions to moderate and manage appeals as well as reports.
+   */
+  Moderator = 2,
+}

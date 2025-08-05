@@ -1,3 +1,5 @@
+import { UserRole } from "../utils/enums";
+
 export interface IDBUser {
   id: string;
   language: string;
@@ -8,6 +10,7 @@ export interface IDBUser {
    * @deprecated - Use `UserToken` Schema instead.
    */
   accessToken?: string;
+  roles?: UserRole[];
   updatedAt: Date;
   createdAt: Date;
 }

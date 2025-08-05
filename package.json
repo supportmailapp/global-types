@@ -1,7 +1,7 @@
 {
   "name": "supportmail-types",
   "private": true,
-  "version": "2.1.4",
+  "version": "2.1.5",
   "author": "The-LukeZ",
   "license": "",
   "type": "module",
@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "discord-api-types": "^0.38.18",
+    "tsc": "^2.0.4",
     "zod": "^4.0.14",
     "zod-validation-error": "^4.0.1"
   },

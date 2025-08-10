@@ -6,11 +6,23 @@ export interface IReport {
   guildId: string;
   authorId: string;
   reason: string;
-  logMessage?: string; // "channelId-messageId"
-  message: string;
+  /**
+   * The log message associated with the report.
+   *
+   * Format: `"channelId-messageId"`
+   */
+  logMessage?: string;
+  /**
+   * The reported message reference.
+   *
+   * Format: `"channelId-messageId"`
+   */
+  message?: string;
   status: ReportStatus;
   comment?: string;
   resolvedBy?: string;
+  resolvedAt?: Date;
+  resolveComment?: string;
   createdAt: Date;
   updatedAt: Date;
 }

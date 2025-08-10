@@ -11,6 +11,8 @@ export interface IReport {
   status: ReportStatus;
   comment?: string;
   resolvedBy?: string;
+  resolvedAt?: Date;
+  resolveComment?: string;
   createdAt: Date;
   updatedAt: Date;
 }

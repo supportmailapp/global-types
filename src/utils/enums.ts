@@ -6,10 +6,9 @@ export enum ReportNotificationType {
 
 export enum BlacklistScope {
   global = 1 << 0, // 1
-  all = 1 << 1, // 2
-  tickets = 1 << 2, // 4
-  reports = 1 << 3, // 8
-  tags = 1 << 4, // 16
+  tickets = 1 << 1, // 2
+  reports = 1 << 2, // 4
+  tags = 1 << 3, // 8
 }
 
 export enum ReportStatus {

@@ -38,3 +38,10 @@ export type TopLevelMessageComponent = Exclude<
   APIMessageTopLevelComponent,
   APIFileComponent | APIMediaGalleryComponent
 >;
+
+/**
+ * Does the `1 << n` operation.
+ */
+export function bitfieldBit(n: number): number {
+  return 1 << n;
+}

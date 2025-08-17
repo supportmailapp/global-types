@@ -25,8 +25,16 @@ export interface IBlacklistEntry {
    * - `2` = tickets
    * - `3` = reports
    * - `4` = tags
+   *
+   * @deprecated Use `scopes` instead.
    */
   scope: BlacklistScope;
+  /**
+   * A bitfield indicating the active scopes for this entry.
+   *
+   * @see {@link BlacklistScope}
+   */
+  scopes: bigint;
   updatedAt: Date;
   createdAt: Date;
 }

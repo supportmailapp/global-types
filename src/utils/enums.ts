@@ -5,11 +5,11 @@ export enum ReportNotificationType {
 }
 
 export enum BlacklistScope {
-  global = 0,
-  all = 1,
-  tickets = 2,
-  reports = 3,
-  tags = 4,
+  global = 1 << 0, // 1
+  all = 1 << 1, // 2
+  tickets = 1 << 2, // 4
+  reports = 1 << 3, // 8
+  tags = 1 << 4, // 16
 }
 
 export enum ReportStatus {
@@ -38,15 +38,6 @@ export enum TicketState {
 export enum SpecialReportChannelType {
   Category = 0,
   Channel = 1,
-}
-
-export enum BillingPeriod {
-  lifetime = 0,
-  twoWeeks = 1,
-  oneMonth = 2,
-  twoMonths = 3,
-  sixMonths = 4,
-  oneYear = 5,
 }
 
 export enum ClientAPIErrorCodes {

@@ -5,11 +5,8 @@
   "author": "The-LukeZ",
   "license": "",
   "type": "module",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "main": "./src/index.ts",
+  "types": "./src/index.d.ts",
   "scripts": {
     "build": "tsc",
     "prepare": "npm run build",

@@ -1,6 +1,6 @@
 import { LogEventType } from "../utils/enums";
 
-interface IBaseLogEvent {
+export interface IBaseLogEvent {
   typ: LogEventType;
   guildId: string;
   timestamp: Date;
@@ -51,6 +51,8 @@ type TicketDeletedEvent = IBaseLogEvent & {
 type TestLogEvent = IBaseLogEvent & {
   typ: LogEventType.TestEvent;
 };
+
+export type ALogEvent = IBaseLogEvent;
 
 export type TLogEvent =
   | TestLogEvent

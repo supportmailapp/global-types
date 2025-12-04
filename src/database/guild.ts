@@ -1,13 +1,5 @@
-import {
-  EntityType,
-  ReportNotificationType,
-  SpecialReportChannelType,
-} from "../utils/enums.js";
-import {
-  ICustomMessage,
-  ICustomModalField,
-  MentionableEntity,
-} from "../utils/helperTypes.js";
+import type { EntityType, ReportNotificationType, SpecialReportChannelType } from "../utils/enums.js";
+import type { ICustomMessage, ICustomModalField, MentionableEntity } from "../utils/helperTypes.js";
 
 export interface IFeedbackTags {
   [key: string]: string | undefined;

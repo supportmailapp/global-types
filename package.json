@@ -12,14 +12,14 @@
     "prepack": "pnpm run build"
   },
   "dependencies": {
-    "discord-api-types": "^0.38.18",
-    "zod": "^4.0.14",
-    "zod-validation-error": "^4.0.1"
+    "discord-api-types": "^0.38.37",
+    "zod": "^4.2.1",
+    "zod-validation-error": "^4.0.2"
   },
   "devDependencies": {
-    "discord.js": "^14.21.0",
-    "mongoose": "^8.17.0",
-    "typescript": "^5.9.2"
+    "discord.js": "^14.25.1",
+    "mongoose": "^8.20.4",
+    "typescript": "^5.9.3"
   },
   "repository": {
     "type": "git",

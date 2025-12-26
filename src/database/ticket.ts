@@ -1,13 +1,16 @@
 import { TicketState, TicketStatus } from "../utils/enums.js";
 
-/**
- * `{ [key: string]: string }` is a map of question position to answer
- */
-export type QuestionAnswer = Record<string, string>;
+export interface IFeedbackAnswer {
+  question: string;
+  answer: string;
+}
 
 export interface IFeedback {
   stars: number;
-  questionAnswers?: QuestionAnswer;
+  questionAnswers: IFeedbackAnswer[];
+  /**
+   * @deprecated Not used after dashboard is done!
+   */
   messageId: string;
 }
 
@@ -28,5 +31,5 @@ export interface ITicket {
   feedback?: IFeedback;
   stateTag?: TicketState; // For tag management (indicates which tag should be applied atm)
   createdAt: Date;
-  updateAt: Date;
+  updatedAt: Date;
 }

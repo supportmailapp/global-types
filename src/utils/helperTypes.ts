@@ -39,17 +39,9 @@ export type TopLevelMessageComponent = Exclude<
   APIFileComponent | APIMediaGalleryComponent
 >;
 
-export type ICustomMessage = {
-  /**
-   * The content of the message.
-   */
-  content?: string;
-  /**
-   * The integer of the hex-color to use for the embed.
-   */
-  color?: number;
-  /**
-   * The URL to the image to use as the large embed image.
-   */
-  image?: string;
-};
+/**
+ * Does the `1 << n` operation.
+ */
+export function bitfieldBit(n: number): number {
+  return 1 << n;
+}

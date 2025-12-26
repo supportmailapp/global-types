@@ -1,14 +1,17 @@
 {
   "compilerOptions": {
+    "target": "ES2022",
     "declaration": true,
     "declarationDir": "./dist",
     "outDir": "./dist",
     "strict": true,
     "esModuleInterop": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "module": "ESNext",
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "allowImportingTsExtensions": false,
+    "resolveJsonModule": true
   },
   "include": [ "src/**/*" ],
   "exclude": [ "node_modules", "**/*.test.ts", "dist" ]

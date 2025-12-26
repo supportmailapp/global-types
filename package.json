@@ -1,24 +1,34 @@
 {
   "name": "supportmail-types",
   "private": true,
-  "version": "1.8.10",
+  "version": "2.1.10",
   "author": "The-LukeZ",
   "type": "module",
-  "main": "./src/index.ts",
-  "types": "./src/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "tsc",
-    "prepare": "npm run build",
-    "prepack": "npm run build"
+    "build": "tsc"
   },
   "dependencies": {
-    "discord-api-types": "^0.38.36",
-    "zod": "^3.25.76",
-    "zod-validation-error": "^3.5.4"
+    "discord-api-types": "^0.38.18",
+    "zod": "^4.0.14",
+    "zod-validation-error": "^4.0.1"
   },
   "devDependencies": {
-    "discord.js": "^14.25.1",
-    "mongoose": "^8.20.1"
+    "discord.js": "^14.21.0",
+    "mongoose": "^8.17.0",
+    "typescript": "^5.9.2"
   },
   "repository": {
     "type": "git",
@@ -28,5 +38,6 @@
   "bugs": {
     "url": "https://github.com/supportmailapp/global-types/issues"
   },
-  "homepage": "https://github.com/supportmailapp/global-types#readme"
+  "homepage": "https://github.com/supportmailapp/global-types#readme",
+  "packageManager": "pnpm@10.26.2"
 }

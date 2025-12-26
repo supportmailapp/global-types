@@ -1,6 +1,10 @@
 // Components V2 validators
 
 import {
+  APIActionRowComponent,
+  APIComponentInMessageActionRow,
+  APIContainerComponent,
+  APISectionComponent,
   ButtonStyle,
   ComponentType,
   SeparatorSpacingSize,
@@ -9,7 +13,7 @@ import {
   type APIContainerComponent,
   type APISectionComponent,
 } from "discord-api-types/v10";
-import { z } from "zod";
+import { z, ZodError } from "zod";
 import { fromZodError, ValidationError } from "zod-validation-error";
 import type { TopLevelMessageComponent } from "./helperTypes";
 
@@ -36,10 +40,7 @@ const buttonLinkPredicate = z
     type: z.literal(ComponentType.Button),
     disabled: z.boolean().optional(),
     style: z.literal(ButtonStyle.Link),
-    url: z
-      .string()
-      .url()
-      .refine(refineURLPredicate(["http:", "https:"])),
+    url: z.url().refine(refineURLPredicate(["http:", "https:"])),
     emoji: emojiPredicate.optional(),
     label: labelPredicate,
   })
@@ -73,7 +74,7 @@ export const thumbnailPredicate = z.object({
 
 export const separatorPredicate = z.object({
   divider: z.boolean().optional(),
-  spacing: z.nativeEnum(SeparatorSpacingSize).optional(),
+  spacing: z.enum(SeparatorSpacingSize).optional(),
 });
 
 export const textDisplayPredicate = z.object({
@@ -115,26 +116,21 @@ export const containerPredicate = z.object({
   accent_color: z.number().int().min(0).max(0xffffff).nullish(),
 });
 
-/**
- * Parses a value with a given validator, accounting for whether validation is enabled.
- *
- * @param validator - The zod validator to use
- * @param value - The value to parse
- * @returns The result from parsing
- * @internal
- */
-export function validate<Validator extends z.ZodTypeAny>(
-  validator: Validator,
-  value: unknown,
-): z.output<Validator> {
-  const result = validator.safeParse(value);
+type ValidationRes<V extends z.ZodType> =
+  | { success: true; data: z.core.output<V> }
+  | { success: false; error: ValidationError };
 
-  if (!result.success) {
-    throw fromZodError(result.error);
-  }
+// static toHumanError(error: ValidationError) {
+//   const { details } = error;
+//   const errors: string[] = [];
 
-  return result.data;
-}
+//   for (let err of details) {
+//     const pathLabel = err.path.length > 0 ? err.path.join(".") : "root";
+//     errors.push(`${pathLabel} : ${err.message}`);
+//   }
+
+//   return errors.join("\n");
+// }
 
 const ALLOWED_TLC_TYPES = [
   ComponentType.ActionRow,
@@ -145,9 +141,38 @@ const ALLOWED_TLC_TYPES = [
 ];
 
 export class V2ComponentsValidator {
-  private data: unknown;
-  constructor(data: any) {
+  constructor(private data: unknown) {
     this.data = data;
+  }
+
+  public validate<V extends z.ZodType>(
+    validator: V,
+    value: any
+  ): ValidationRes<V> {
+    try {
+      const result = validator.parse(value);
+
+      return {
+        success: true,
+        data: result,
+      };
+    } catch (err) {
+      if (err instanceof ZodError) {
+        return {
+          success: false,
+          // ? as of 2025-07-16 the fromError function isn't working and has a critical bug.
+          error: fromZodError(err) as ValidationError,
+        };
+      }
+      return {
+        success: false,
+        error: new ValidationError(
+          `Unexpected error during validation: ${
+            err instanceof Error ? err.message : String(err)
+          }`
+        ),
+      };
+    }
   }
 
   toJSON(): TopLevelMessageComponent[] {
@@ -165,10 +190,10 @@ export class V2ComponentsValidator {
           this.validateContainer(component);
           break;
         case ComponentType.Separator:
-          validate(separatorPredicate, component);
+          this.validate(separatorPredicate, component);
           break;
         case ComponentType.TextDisplay:
-          validate(textDisplayPredicate, component);
+          this.validate(textDisplayPredicate, component);
           break;
         default:
           throw new ValidationError(
@@ -186,24 +211,26 @@ export class V2ComponentsValidator {
     // Basically the same as for a top-level component, but without the container type
     const clone = structuredClone(container);
 
-    validate(containerPredicate, clone);
+    this.validate(containerPredicate, clone);
   }
 
   private validateSection(section: APISectionComponent) {
     // Validate the section itself
-    validate(sectionPredicate, section);
+    this.validate(sectionPredicate, section);
     // Just the accessory or thumbnail
     if (section.accessory.type === ComponentType.Thumbnail) {
-      validate(thumbnailPredicate, section.accessory);
+      this.validate(thumbnailPredicate, section.accessory);
     } else {
-      validate(buttonPredicate, section.accessory);
+      this.validate(buttonPredicate, section.accessory);
     }
   }
 
-  private validateActionRow(row: APIActionRowComponent<APIComponentInMessageActionRow>) {
-    validate(actionRowPredicate, row);
+  private validateActionRow(
+    row: APIActionRowComponent<APIComponentInMessageActionRow>
+  ) {
+    this.validate(actionRowPredicate, row);
     for (const child of row.components) {
-      validate(buttonPredicate, child);
+      this.validate(buttonPredicate, child);
     }
   }
 }

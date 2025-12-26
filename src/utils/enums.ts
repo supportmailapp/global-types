@@ -5,11 +5,18 @@ export enum ReportNotificationType {
 }
 
 export enum BlacklistScope {
+<<<<<<< HEAD
+  global = 1 << 0, // 1
+  tickets = 1 << 1, // 2
+  reports = 1 << 2, // 4
+  tags = 1 << 3, // 8
+=======
   global = 0,
   all = 1,
   tickets = 2,
   reports = 3,
   tags = 4,
+>>>>>>> legacy-types-compatibility
 }
 
 export enum ReportStatus {
@@ -40,19 +47,13 @@ export enum SpecialReportChannelType {
   Channel = 1,
 }
 
-export enum BillingPeriod {
-  lifetime = 0,
-  twoWeeks = 1,
-  oneMonth = 2,
-  twoMonths = 3,
-  sixMonths = 4,
-  oneYear = 5,
-}
-
-export enum SetupTicketsErrorCode {
+export enum ClientAPIErrorCodes {
   MissingPermissions = 0,
   CategoryCreateFailed = 1,
-  ForumCreateFailed = 2,
+  ForumCreationFailed = 2,
+  GuildNotFound = 3,
+  CommunityNotEnabled = 4,
+  CategoryNotFound = 5,
 }
 
 /**
@@ -72,3 +73,23 @@ export enum LogEventType {
   TicketReopened = "ticketReopen",
   TicketDeleted = "ticketDelete",
 }
+<<<<<<< HEAD
+
+export enum UserRole {
+  /**
+   * Represents a regular user with no special permissions.
+   *
+   * This is the default role when no role is given.
+   */
+  User = 0,
+  /**
+   * Represents a user with administrative permissions.
+   */
+  Admin = 1,
+  /**
+   * Represents a user with permissions to moderate and manage appeals as well as reports.
+   */
+  Moderator = 2,
+}
+=======
+>>>>>>> legacy-types-compatibility

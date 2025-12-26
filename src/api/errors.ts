@@ -1,4 +1,4 @@
-import { SetupTicketsErrorCode } from "../utils/enums";
+import { ClientAPIErrorCodes } from "../utils/enums";
 
 interface ClientAPIErrorExtraFields {
   response?: any;
@@ -13,7 +13,7 @@ interface IClientAPIError {
   /**
    * The error code.
    */
-  code: SetupTicketsErrorCode;
+  code: ClientAPIErrorCodes;
   /**
    * The response from an API call that was made on the server.
    */
@@ -26,13 +26,13 @@ interface IClientAPIError {
 
 export class ClientAPIError implements IClientAPIError {
   public message: string;
-  public code: SetupTicketsErrorCode;
+  public code: ClientAPIErrorCodes;
   public response: any;
   public data: ClientAPIErrorData | undefined;
 
   constructor(
     message: string,
-    code: SetupTicketsErrorCode,
+    code: ClientAPIErrorCodes,
     { response = undefined, data = undefined }: ClientAPIErrorExtraFields
   ) {
     this.message = message;
@@ -57,8 +57,6 @@ export class ClientAPIError implements IClientAPIError {
   }
 }
 
-export type ClientAPIErrorData = MissingPermissionsError;
-
 export type MissingPermissionsData = {
   /**
    * The permissions that the bot is missing.
@@ -73,6 +71,9 @@ export type MissingPermissionsData = {
 };
 
 export type MissingPermissionsError = ClientAPIError & {
-  code: SetupTicketsErrorCode.MissingPermissions;
+  code: ClientAPIErrorCodes.MissingPermissions;
   data: MissingPermissionsData;
 };
+
+// Combined Type
+export type ClientAPIErrorData = MissingPermissionsError;

@@ -1,8 +1,12 @@
-import type { EntityType, ReportNotificationType, SpecialReportChannelType } from "../utils/enums.js";
-import type { ICustomMessage, ICustomModalField, MentionableEntity } from "../utils/helperTypes.js";
+import {
+  EntityType,
+  ReportNotificationType,
+  SpecialReportChannelType,
+} from "../utils/enums.js";
+import { ICustomModalField, MentionableEntity } from "../utils/helperTypes.js";
 
 export interface IFeedbackTags {
-  [key: string]: string | undefined;
+  [key: string]: string | undefined; // This missing means TS issues
   one?: string;
   two?: string;
   three?: string;
@@ -11,7 +15,11 @@ export interface IFeedbackTags {
 }
 
 export interface IFeedbackConfig {
+  /**
+   * @deprecated Not used after dashboard is done! Use `isEnabled` instead.
+   */
   postId?: string;
+  isEnabled: boolean;
   questions?: ICustomModalField[];
   thankYou?: string;
   tags?: IFeedbackTags;
@@ -23,6 +31,9 @@ export interface IAnonym {
    */
   user: boolean;
   enabled: boolean;
+  /**
+   * @deprecated Not used currently. Will be re-enabled with premium.
+   */
   alias?: string;
 }
 
@@ -50,9 +61,6 @@ export interface ITicketConfig {
   autoForwarding: boolean;
   allowedBots?: string[];
   feedback?: IFeedbackConfig;
-  pings?: MentionableEntity[];
-  creationMessage?: ICustomMessage;
-  closeMessage?: ICustomMessage;
   /**
    * Webhook ID for the log in a ticket post when a /send command is used.
    *

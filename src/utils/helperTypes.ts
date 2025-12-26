@@ -41,6 +41,14 @@ export type TopLevelMessageComponent = Exclude<
 
 /**
  * Does the `1 << n` operation.
+ *
+ * Example: You wanna check if bit 3 is set in a bitfield, you can do:
+ * ```ts
+ * const bitToCheck = bitfieldBit(3); // 8
+ * if (bitfield & bitToCheck) {
+ *   // Bit 3 is set
+ * }
+ * ```
  */
 export function bitfieldBit(n: number): number {
   return 1 << n;

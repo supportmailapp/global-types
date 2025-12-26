@@ -4,21 +4,12 @@
   "version": "2.1.10",
   "author": "The-LukeZ",
   "type": "module",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./src/index.d.ts",
-      "import": "./src/index.ts",
-      "default": "./src/index.ts"
-    },
-    "./package.json": "./package.json"
-  },
-  "files": [
-    "dist"
-  ],
+  "main": "./src/index.ts",
+  "types": "./src/index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "prepare": "pnpm run build",
+    "prepack": "pnpm run build"
   },
   "dependencies": {
     "discord-api-types": "^0.38.18",
@@ -38,6 +29,5 @@
   "bugs": {
     "url": "https://github.com/supportmailapp/global-types/issues"
   },
-  "homepage": "https://github.com/supportmailapp/global-types#readme",
-  "packageManager": "pnpm@10.26.2"
+  "homepage": "https://github.com/supportmailapp/global-types#readme"
 }

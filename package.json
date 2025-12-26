@@ -6,8 +6,6 @@
   "type": "module",
   "main": "./src/index.ts",
   "types": "./src/index.d.ts",
-  "main": "./src/index.ts",
-  "types": "./src/index.d.ts",
   "scripts": {
     "build": "tsc",
     "prepare": "pnpm run build",

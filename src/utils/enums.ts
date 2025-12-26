@@ -5,10 +5,18 @@ export enum ReportNotificationType {
 }
 
 export enum BlacklistScope {
+<<<<<<< HEAD
   global = 1 << 0, // 1
   tickets = 1 << 1, // 2
   reports = 1 << 2, // 4
   tags = 1 << 3, // 8
+=======
+  global = 0,
+  all = 1,
+  tickets = 2,
+  reports = 3,
+  tags = 4,
+>>>>>>> legacy-types-compatibility
 }
 
 export enum ReportStatus {
@@ -65,6 +73,7 @@ export enum LogEventType {
   TicketReopened = "ticketReopen",
   TicketDeleted = "ticketDelete",
 }
+<<<<<<< HEAD
 
 export enum UserRole {
   /**
@@ -82,3 +91,5 @@ export enum UserRole {
    */
   Moderator = 2,
 }
+=======
+>>>>>>> legacy-types-compatibility

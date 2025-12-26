@@ -8,10 +8,14 @@ import {
   ButtonStyle,
   ComponentType,
   SeparatorSpacingSize,
+  type APIActionRowComponent,
+  type APIComponentInMessageActionRow,
+  type APIContainerComponent,
+  type APISectionComponent,
 } from "discord-api-types/v10";
 import { z, ZodError } from "zod";
 import { fromZodError, ValidationError } from "zod-validation-error";
-import { TopLevelMessageComponent } from "./helperTypes";
+import type { TopLevelMessageComponent } from "./helperTypes";
 
 const refineURLPredicate = (allowedProtocols: string[]) => (value: string) => {
   const url = new URL(value);

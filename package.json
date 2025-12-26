@@ -34,5 +34,5 @@
     "url": "https://github.com/supportmailapp/global-types/issues"
   },
   "homepage": "https://github.com/supportmailapp/global-types#readme",
-  "packageManager": "pnpm@10.14.0"
+  "packageManager": "pnpm@10.26.2"
 }

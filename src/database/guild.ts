@@ -61,6 +61,12 @@ export interface ITicketConfig {
   autoForwarding: boolean;
   allowedBots?: string[];
   feedback?: IFeedbackConfig;
+<<<<<<< HEAD
+=======
+  pings?: MentionableEntity[];
+  creationMessage?: ICustomMessage;
+  closeMessage?: ICustomMessage;
+>>>>>>> legacy-types-compatibility
   /**
    * Webhook ID for the log in a ticket post when a /send command is used.
    *

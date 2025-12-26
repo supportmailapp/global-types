@@ -61,12 +61,6 @@ export interface ITicketConfig {
   autoForwarding: boolean;
   allowedBots?: string[];
   feedback?: IFeedbackConfig;
-<<<<<<< HEAD
-=======
-  pings?: MentionableEntity[];
-  creationMessage?: ICustomMessage;
-  closeMessage?: ICustomMessage;
->>>>>>> legacy-types-compatibility
   /**
    * Webhook ID for the log in a ticket post when a /send command is used.
    *
@@ -135,6 +129,26 @@ export interface IDBGuild {
   ticketConfig: ITicketConfig;
   reportConfig: IReportConfig;
   blacklistImmune?: BlacklistImmunityEntry[]; // [ [ type, "id" ] ]
+  ai?: {
+    /**
+     * Indicates if AI features are enabled in the guild (premium feature)
+     *
+     * @default false
+     */
+    enabled: boolean;
+    /**
+     * Max tokens for AI responses
+     *
+     * @default 1000
+     */
+    maxTokens: number;
+    /**
+     * Temperature for AI responses
+     *
+     * @default 0.7
+     */
+    temperature: number;
+  };
   flags: IGuildFlags;
   createdAt: Date;
 }

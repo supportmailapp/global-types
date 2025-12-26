@@ -3,7 +3,6 @@
   "private": true,
   "version": "2.1.10",
   "author": "The-LukeZ",
-  "license": "",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

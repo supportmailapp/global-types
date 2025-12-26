@@ -32,7 +32,7 @@ const emojiPredicate = z
   })
   .strict()
   .refine((data) => data.id !== undefined || data.name !== undefined, {
-    message: "Either 'id' or 'name' must be provided",
+    error: "Either 'id' or 'name' must be provided",
   });
 
 const buttonLinkPredicate = z
@@ -62,8 +62,7 @@ const unfurledMediaItemPredicate = z.object({
     .string()
     .url()
     .refine(refineURLPredicate(["http:", "https:"]), {
-      message:
-        "Invalid protocol for media URL. Must be http:, https:, or attachment:",
+      error: "Invalid protocol for media URL. Must be http:, https:, or attachment:",
     }),
 });
 
@@ -109,7 +108,7 @@ export const containerPredicate = z.object({
         sectionPredicate,
         separatorPredicate,
         textDisplayPredicate,
-      ])
+      ]),
     )
     .min(1)
     .max(10),
@@ -200,7 +199,7 @@ export class V2ComponentsValidator {
           throw new ValidationError(
             `Invalid top-level component type (${
               (component as any).type
-            }) - expected one of: ${ALLOWED_TLC_TYPES.join(", ")}.`
+            }) - expected one of: ${ALLOWED_TLC_TYPES.join(", ")}.`,
           );
       }
     }

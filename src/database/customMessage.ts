@@ -4,7 +4,7 @@ import type { TopLevelMessageComponent } from "../utils/helperTypes";
 /**
  * Interface representing a custom message in the database.
  */
-export interface ICustomMessage {
+interface ICustomMessage {
   guildId: string;
   /**
    * The name of the custom message.

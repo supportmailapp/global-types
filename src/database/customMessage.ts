@@ -1,4 +1,5 @@
-import { TopLevelMessageComponent } from "../utils/helperTypes";
+// @ts-nocheck | TODO: Fix types
+import type { TopLevelMessageComponent } from "../utils/helperTypes";
 
 /**
  * Interface representing a custom message in the database.

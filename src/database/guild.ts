@@ -1,9 +1,5 @@
-import {
-  EntityType,
-  ReportNotificationType,
-  SpecialReportChannelType,
-} from "../utils/enums.js";
-import { ICustomModalField, MentionableEntity } from "../utils/helperTypes.js";
+import type { EntityType, ReportNotificationType, SpecialReportChannelType } from "../utils/enums.js";
+import type { ICustomModalField, MentionableEntity } from "../utils/helperTypes.js";
 
 export interface IFeedbackTags {
   [key: string]: string | undefined; // This missing means TS issues
@@ -37,6 +33,12 @@ export interface IAnonym {
   alias?: string;
 }
 
+export interface ICustomMessage {
+  content?: string;
+  color?: number;
+  image?: string;
+}
+
 export interface IStatusTags {
   [key: string]: string | undefined;
   open?: string;
@@ -60,6 +62,7 @@ export interface ITicketConfig {
   anonym: IAnonym;
   autoForwarding: boolean;
   allowedBots?: string[];
+  pings?: MentionableEntity[];
   feedback?: IFeedbackConfig;
   /**
    * Webhook ID for the log in a ticket post when a /send command is used.
@@ -67,6 +70,8 @@ export interface ITicketConfig {
    * This is used to log the message in the ticket post when a mod sends a message using the `/send` command.
    */
   webhookDocId?: string;
+  creationMessage?: ICustomMessage;
+  closeMessage?: ICustomMessage;
 }
 
 export type ISpecialReportChannel = {

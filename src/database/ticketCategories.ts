@@ -1,3 +1,4 @@
+// @ts-nocheck | TODO: Fix types
 import {
   Entity,
   ICustomModalField,

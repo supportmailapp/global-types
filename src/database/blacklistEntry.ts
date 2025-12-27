@@ -38,6 +38,13 @@ export interface IBlacklistEntry {
    * A bitfield indicating the active scopes for this entry.
    *
    * @see {@link BlacklistScope}
+   * 
+   * For example, to check if tickets are blacklisted:
+   * ```ts
+   * const isTicketsBlacklisted = (entry.scopes & BlacklistScope.tickets) === BlacklistScope.tickets;
+   * // Or use the helper function
+   * const isTicketsBlacklisted = isScopeBlacklisted(entry, BlacklistScope.tickets);
+   * ```
    */
   scopes: bigint;
   updatedAt: Date;

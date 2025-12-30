@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "discord.js": "^14.25.1",
-    "mongoose": "^8.20.4",
+    "mongoose": "^9.1.1",
     "typescript": "^5.9.3"
   },
   "repository": {

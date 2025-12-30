@@ -1,10 +1,5 @@
 // @ts-nocheck | TODO: Fix types
-import {
-  Entity,
-  ICustomModalField,
-  IPartialEmoji,
-  MentionableEntity,
-} from "../utils/helperTypes";
+import { Entity, ICustomModalField, IPartialEmoji, MentionableEntity } from "../utils/helperTypes";
 
 export interface ITicketCategory {
   /**

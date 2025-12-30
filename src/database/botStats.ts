@@ -9,7 +9,7 @@ export interface IBotStats {
   users: number;
   /**
    * A number indicating how many tickets have been created that day.
-   * 
+   *
    * This is used to determine the new tickets count without querying the db for all tickets.
    */
   ticketsCreated: number;

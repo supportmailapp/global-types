@@ -7,7 +7,7 @@ export interface IKnowledgeEntry {
    * the content of an uploaded md/txt file.
    *
    * if not set, question and answer must be set.
-   * 
+   *
    * Note: For one guild, all content fields must not exceed 64KB in total.
    */
   content?: string;

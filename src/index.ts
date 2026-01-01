@@ -14,5 +14,6 @@ export * from "./database/userTokens.js";
 export * from "./database/botStats.js";
 export * from "./database/logEvent.js";
 export * from "./database/knowledge.js";
+export * from "./database/ticketCategories.js";
 
 export * from "./api/errors.js";

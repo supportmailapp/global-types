@@ -30,7 +30,7 @@ export interface ITicketCategory {
    *
    * Because it's in a forum channel...
    */
-  tag: string;
+  tag?: string;
   /**
    * Optional array of entities to ping when a ticket of this category is created.
    */
@@ -46,3 +46,20 @@ export interface ITicketCategory {
    */
   customMessageId: string;
 }
+
+// The type used when sending/receiving ticket categories via the API
+export type APITicketCategory = Omit<ITicketCategory, "customMessageId"> & {
+  /**
+   * If from the server, the MongoDB ObjectId as a string.
+   * 
+   * If local, an ISO string representing the creation date. Gets replaced when saved to the database.
+   */
+  _id: string;
+  /**
+   * If set, then this ticket category is only stored locally and not in the database.
+   *
+   * it is automatically created when saving a new ticket category.
+   */
+  local?: true;
+  customMessageId?: string;
+};

@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "discord-api-types": "^0.38.37",
-    "zod": "^4.2.1",
+    "zod": "^4.3.4",
     "zod-validation-error": "^4.0.2"
   },
   "devDependencies": {

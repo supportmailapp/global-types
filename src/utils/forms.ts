@@ -37,7 +37,10 @@ type IBaseFormComponent<T extends ModalComponentType> = {
   placeholder: string;
 };
 
-export interface ITextDisplayComponent extends Omit<IBaseFormComponent<ComponentType.TextDisplay>, "placeholder"> {
+export interface ITextDisplayComponent extends Pick<
+  IBaseFormComponent<ComponentType.TextDisplay>,
+  "id" | "type"
+> {
   content: string;
 }
 
@@ -107,4 +110,12 @@ export type IFormComponent =
   | IFileUploadComponent;
 
 export type AnyAPIFormComponent = IFormComponent & { _id?: string };
-export type APIFormComponent<T extends ComponentType> = Extract<AnyAPIFormComponent, { type: T }>;
+
+/**
+ * API Form Component with local flag
+ *
+ * local means, the `id` needs to be replaced with a new generated snowflake on the server.
+ */
+export type APIFormComponent<T extends ComponentType> = Extract<AnyAPIFormComponent, { type: T }> & {
+  local?: true;
+};

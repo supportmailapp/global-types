@@ -109,13 +109,17 @@ export type IFormComponent =
   | IStringSelectComponent
   | IFileUploadComponent;
 
-export type AnyAPIFormComponent = IFormComponent & { _id?: string };
+export type AnyAPIFormComponent = IFormComponent & { _id?: string; local?: true };
 
 /**
  * API Form Component with local flag
  *
  * local means, the `id` needs to be replaced with a new generated snowflake on the server.
  */
-export type APIFormComponent<T extends ComponentType> = Extract<AnyAPIFormComponent, { type: T }> & {
-  local?: true;
-};
+export type APIFormComponent<T extends ComponentType> = Extract<AnyAPIFormComponent, { type: T }>;
+
+export type FormComponentKeys =
+  | keyof ITextDisplayComponent
+  | keyof ITextInputComponent
+  | keyof IStringSelectComponent
+  | keyof IFileUploadComponent;

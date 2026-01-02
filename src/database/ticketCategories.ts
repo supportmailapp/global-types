@@ -41,7 +41,7 @@ export interface ITicketCategory {
    * 
    * @deprecated Use `components` instead.
    */
-  fields: ICustomModalField[];
+  fields?: ICustomModalField[];
   /**
    * Custom Form components to be displayed in the ticket creation modal.
    */

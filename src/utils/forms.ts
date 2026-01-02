@@ -1,6 +1,4 @@
 import { ComponentType, TextInputStyle } from "discord-api-types/v10";
-import { Schema } from "mongoose";
-import { z } from "zod";
 
 export type ModalComponentType =
   | ComponentType.TextInput
@@ -39,27 +37,27 @@ type IBaseFormComponent<T extends ModalComponentType> = {
   placeholder: string;
 };
 
-interface ITextDisplayComponent extends Omit<IBaseFormComponent<ComponentType.TextDisplay>, "placeholder"> {
+export interface ITextDisplayComponent extends Omit<IBaseFormComponent<ComponentType.TextDisplay>, "placeholder"> {
   content: string;
 }
 
-interface ITextInputComponent extends IBaseFormComponent<ComponentType.TextInput> {
+export interface ITextInputComponent extends IBaseFormComponent<ComponentType.TextInput> {
   style: TextInputStyle;
   minLength?: number;
   maxLength?: number;
   defaultValue?: string;
 }
 
-interface IBaseSelectMenuComponent<T extends ModalComponentType> extends IBaseFormComponent<T> {
+export interface IBaseSelectMenuComponent<T extends ModalComponentType> extends IBaseFormComponent<T> {
   minValues?: number;
   maxValues?: number;
 }
 
-interface IStringSelectComponent extends IBaseSelectMenuComponent<ComponentType.StringSelect> {
+export interface IStringSelectComponent extends IBaseSelectMenuComponent<ComponentType.StringSelect> {
   options: IStringSelectOption[];
 }
 
-interface IStringSelectOption {
+export interface IStringSelectOption {
   id?: string;
   label: string;
   value: string;
@@ -68,7 +66,7 @@ interface IStringSelectOption {
   default?: boolean;
 }
 
-interface IFileUploadComponent extends Omit<IBaseFormComponent<ComponentType.File>, "placeholder"> {
+export interface IFileUploadComponent extends Omit<IBaseFormComponent<ComponentType.File>, "placeholder"> {
   /**
    * The label sent in the file thread along with their respective file(s).
    *

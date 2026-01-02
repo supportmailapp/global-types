@@ -1,5 +1,5 @@
 import { ComponentType } from "discord-api-types/v10";
-import { IFormComponent } from "../utils/forms";
+import { AnyAPIFeedbackFormComponent, IFormComponent } from "../utils/forms";
 import { ICustomModalField } from "../utils/helperTypes";
 
 export interface IFeedbackTags {
@@ -14,10 +14,8 @@ export interface IFeedbackTags {
 export type IFeedbackFormComponent = Exclude<IFormComponent, { type: ComponentType.File }>;
 
 export interface IFeedbackConfig {
-  /**
-   * @deprecated Not used after dashboard is done! Use `isEnabled` instead.
-   */
-  postId?: string;
+  guildId: string;
+  channelId?: string;
   isEnabled: boolean;
   /**
    * Custom questions to ask the user after closing the ticket.
@@ -28,9 +26,40 @@ export interface IFeedbackConfig {
   /**
    * Custom components to show in the feedback form.
    *
-   * @deprecated File components are not supported in feedback forms.
+   * Note, File components are not supported in feedback forms.
    */
   components?: IFeedbackFormComponent[];
   thankYou?: string;
   tags?: IFeedbackTags;
 }
+
+export type APIFeedbackConfig = Omit<IFeedbackConfig, "components"> & {
+  /**
+   * Custom components to show in the feedback form.
+   *
+   * Note, File components are not supported in feedback forms.
+   */
+  components?: AnyAPIFeedbackFormComponent[];
+};
+
+export interface IFeedbackAnswer {
+  questionId: string;
+  label: string;
+  answer: string;
+}
+
+export interface IFeedback {
+  guildId: string;
+  ticketId: string;
+  rating: number;
+  /**
+   * A mapping of question IDs to answers.
+   */
+  answers: IFeedbackAnswer[];
+  timestamp: Date;
+}
+
+export type APIFeedback = Omit<IFeedback, "timestamp"> & {
+  /** ISO 8601 timestamp */
+  timestamp: string;
+};

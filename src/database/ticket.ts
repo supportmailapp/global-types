@@ -1,19 +1,5 @@
 import { TicketState, TicketStatus } from "../utils/enums.js";
 
-export interface IFeedbackAnswer {
-  question: string;
-  answer: string;
-}
-
-export interface IFeedback {
-  stars: number;
-  questionAnswers: IFeedbackAnswer[];
-  /**
-   * @deprecated Not used after dashboard is done!
-   */
-  messageId: string;
-}
-
 export interface ITicket {
   id: string;
   /**
@@ -28,7 +14,6 @@ export interface ITicket {
   status: TicketStatus;
   closeComment?: string;
   lastActive: string; // For sorting purposes
-  feedback?: IFeedback;
   stateTag?: TicketState; // For tag management (indicates which tag should be applied atm)
   createdAt: Date;
   updatedAt: Date;

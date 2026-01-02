@@ -110,6 +110,7 @@ export type IFormComponent =
   | IFileUploadComponent;
 
 export type AnyAPIFormComponent = IFormComponent & { _id?: string; local?: true };
+export type AnyAPIFeedbackFormComponent = Exclude<AnyAPIFormComponent, { type: ComponentType.File }>;
 
 /**
  * API Form Component with local flag

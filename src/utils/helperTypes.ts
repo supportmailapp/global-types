@@ -2,8 +2,8 @@ import type {
   APIFileComponent,
   APIMediaGalleryComponent,
   APIMessageTopLevelComponent,
+  TextInputStyle,
 } from "discord-api-types/v10";
-import type { TextInputStyle } from "discord.js";
 import { EntityType } from "./enums";
 
 export type Entity<T extends EntityType> = {
@@ -23,6 +23,7 @@ export type IPartialEmoji = {
   animated?: boolean;
 };
 
+/** @deprecated Use the new `IFormComponent` */
 export interface ICustomModalField {
   /** Min: 1 | Max: 5 */
   position: number;

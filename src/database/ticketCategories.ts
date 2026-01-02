@@ -1,5 +1,6 @@
 // @ts-nocheck | TODO: Fix types
-import { Entity, ICustomModalField, IPartialEmoji, MentionableEntity } from "../utils/helperTypes";
+import { ICustomModalField, IFormComponent } from "../utils/forms";
+import { Entity, IPartialEmoji, MentionableEntity } from "../utils/helperTypes";
 
 export interface ITicketCategory {
   /**
@@ -37,8 +38,14 @@ export interface ITicketCategory {
   pings?: MentionableEntity[];
   /**
    * Custom Modal fields to be displayed in the ticket creation modal.
+   * 
+   * @deprecated Use `components` instead.
    */
   fields: ICustomModalField[];
+  /**
+   * Custom Form components to be displayed in the ticket creation modal.
+   */
+  components: IFormComponent[];
   /**
    * The ObjectId referece of a custom message.
    *

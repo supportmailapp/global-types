@@ -110,29 +110,3 @@ export type IFormComponent =
 
 export type AnyAPIFormComponent = IFormComponent & { _id?: string };
 export type APIFormComponent<T extends ComponentType> = Extract<AnyAPIFormComponent, { type: T }>;
-
-export const formStringSelectOptionSchema = new Schema<IStringSelectOption>({
-  label: { type: String, required: true, maxlength: 45 },
-  value: { type: String, required: true, maxlength: 100 },
-  description: { type: String, required: false, maxlength: 100 },
-  emoji: { type: String, required: false, maxlength: 100 },
-  default: { type: Boolean, required: false, default: false },
-});
-
-export const CustomModalFieldSchema = new Schema<IFormComponent>({
-  type: { type: Number, required: true },
-  id: { type: String, required: true, minlength: 17, maxlength: 23 },
-  required: { type: Boolean, default: false },
-  content: { type: String, required: false },
-  placeholder: { type: String, required: false },
-  style: { type: Number, required: false },
-  label: { type: String, required: false, minlength: 1, maxlength: 45 },
-  description: { type: String, required: false, maxlength: 100 },
-  minLength: { type: Number, required: false, min: 0, max: 4000 },
-  maxLength: { type: Number, required: false, min: 1, max: 4000 },
-  defaultValue: { type: String, required: false, minlength: 0, maxlength: 4000 },
-  minValues: { type: Number, required: false, min: 0, max: 25 },
-  maxValues: { type: Number, required: false, min: 1, max: 25 },
-  messageLabel: { type: String, required: false, maxlength: 100 },
-  options: { type: [formStringSelectOptionSchema], required: false },
-});

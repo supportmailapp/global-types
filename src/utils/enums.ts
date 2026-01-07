@@ -11,6 +11,9 @@ export enum BlacklistScope {
   tags = 1 << 3, // 8
 }
 
+export const MinBlacklistScope = BlacklistScope.tickets;
+export const MaxBlacklistScope = BlacklistScope.tags;
+
 export enum ReportStatus {
   ignored = 0,
   open = 1,

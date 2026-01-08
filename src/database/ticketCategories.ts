@@ -38,7 +38,7 @@ export interface ITicketCategory {
   pings?: MentionableEntity[];
   /**
    * Custom Modal fields to be displayed in the ticket creation modal.
-   * 
+   *
    * @deprecated Use `components` instead.
    */
   fields?: ICustomModalField[];
@@ -58,7 +58,7 @@ export interface ITicketCategory {
 export type APITicketCategory = Omit<ITicketCategory, "customMessageId"> & {
   /**
    * If from the server, the MongoDB ObjectId as a string.
-   * 
+   *
    * If local, an ISO string representing the creation date. Gets replaced when saved to the database.
    */
   _id: string;

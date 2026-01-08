@@ -37,10 +37,8 @@ type IBaseFormComponent<T extends ModalComponentType> = {
   placeholder: string;
 };
 
-export interface ITextDisplayComponent extends Pick<
-  IBaseFormComponent<ComponentType.TextDisplay>,
-  "id" | "type"
-> {
+export interface ITextDisplayComponent
+  extends Pick<IBaseFormComponent<ComponentType.TextDisplay>, "id" | "type"> {
   content: string;
 }
 

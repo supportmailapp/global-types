@@ -4,7 +4,7 @@ export interface IUserToken {
   refreshToken: string | null;
   /**
    * The clearance level of the user
-   * 
+   *
    * "user" or missing - regular user access
    * "admin" - admin access
    */

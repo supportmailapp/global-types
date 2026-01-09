@@ -46,12 +46,8 @@ export interface ITicketCategory {
    * Custom Form components to be displayed in the ticket creation modal.
    */
   components: IFormComponent[];
-  /**
-   * The ObjectId referece of a custom message.
-   *
-   * Is sent after the user created the ticket.
-   */
-  customMessageId: string;
+  creationMessage?: string | null;
+  closeMessage?: string | null;
 }
 
 // The type used when sending/receiving ticket categories via the API

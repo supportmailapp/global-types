@@ -25,7 +25,7 @@ export interface ITicketCategory {
   /**
    * Optional emoji associated with this category.
    */
-  emoji?: IPartialEmoji;
+  emoji?: string;
   /**
    * The Tag ID that should be used for this category.
    *

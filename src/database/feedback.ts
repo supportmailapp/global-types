@@ -43,6 +43,9 @@ export type APIFeedbackConfig = Omit<IFeedbackConfig, "components"> & {
 };
 
 export interface IFeedbackAnswer {
+  /**
+   * The ID of the question this answer corresponds to.
+   */
   questionId: string;
   label: string;
   answer: string;

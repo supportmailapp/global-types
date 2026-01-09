@@ -13,12 +13,6 @@ export interface IAnonym {
   alias?: string;
 }
 
-export interface ICustomMessage {
-  content?: string;
-  color?: number;
-  image?: string;
-}
-
 export interface IStatusTags {
   [key: string]: string | undefined;
   open?: string;
@@ -49,8 +43,8 @@ export interface ITicketConfig {
    * This is used to log the message in the ticket post when a mod sends a message using the `/send` command.
    */
   webhookDocId?: string;
-  creationMessage?: ICustomMessage;
-  closeMessage?: ICustomMessage;
+  creationMessage?: string;
+  closeMessage?: string;
 }
 
 export type ISpecialReportChannel = {

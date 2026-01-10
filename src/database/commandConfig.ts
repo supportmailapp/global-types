@@ -47,7 +47,7 @@ export interface ICommandConfig {
    * The permissions this command can be used with.
    *
    * - If empty, don't check for permissions.
-   * - If `roles`, `users`, and `permissions` are all empty, check for MANAGE_GUILD permissions!
+   * - If `roles`, `users`, and `permissions` are all empty, check for MANAGE_GUILD permissions! This is using discord's bitfield system.
    */
   permissions: bigint[];
 }

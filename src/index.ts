@@ -17,5 +17,6 @@ export * from "./database/logEvent.js";
 export * from "./database/knowledge.js";
 export * from "./database/ticketCategories.js";
 export * from "./database/feedback.js";
+export * from "./database/commandConfig.js";
 
 export * from "./api/errors.js";

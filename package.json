@@ -1,7 +1,7 @@
 {
   "name": "supportmail-types",
   "private": true,
-  "version": "2.1.11",
+  "version": "2.2.0",
   "author": "The-LukeZ",
   "type": "module",
   "main": "./src/index.ts",

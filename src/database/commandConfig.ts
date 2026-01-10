@@ -4,9 +4,6 @@
 export interface ICommandConfig {
   /**
    * The unique command ID.
-   *
-   * - If `guildId == null`, this is unique globally.
-   * - If `guildId != null`, this is unique per guild.
    */
   id: string;
   /**
@@ -23,7 +20,8 @@ export interface ICommandConfig {
   /**
    * The guild ID this command is for.
    *
-   * Currently not in use, but may be used in the future for custom commands?
+   * - If `guildId == null`, this is unique globally.
+   * - If `guildId != null`, this is unique per guild.
    */
   guildId: string | null;
   /**

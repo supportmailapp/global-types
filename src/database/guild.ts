@@ -1,5 +1,5 @@
-import type { EntityType, ReportNotificationType, SpecialReportChannelType } from "../utils/enums.js";
-import type { MentionableEntity } from "../utils/helperTypes.js";
+import type { EntityType, ReportNotificationType } from "../utils/enums.js";
+import type { MentionableEntity, SpecialChannel } from "../utils/helperTypes.js";
 
 export interface IAnonym {
   /**
@@ -45,14 +45,9 @@ export interface ITicketConfig {
   webhookDocId?: string;
 }
 
-export type ISpecialReportChannel = {
-  t: SpecialReportChannelType;
-  id: string;
-};
-
 export interface ReportChannelSettings {
   setting: "IN" | "EX"; // IN = Include, EX = Exclude
-  ids: ISpecialReportChannel[];
+  ids: SpecialChannel[];
 }
 
 export interface ReportLimitsConfig {

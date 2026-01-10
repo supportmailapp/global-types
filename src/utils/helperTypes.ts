@@ -4,7 +4,12 @@ import type {
   APIMessageTopLevelComponent,
   TextInputStyle,
 } from "discord-api-types/v10";
-import { EntityType } from "./enums";
+import { EntityType, SpecialChannelType } from "./enums";
+
+export type SpecialChannel = {
+  t: SpecialChannelType;
+  id: string;
+};
 
 export type Entity<T extends EntityType> = {
   typ: T;

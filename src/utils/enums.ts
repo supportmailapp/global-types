@@ -37,7 +37,7 @@ export enum TicketState {
   awaitingRes = 4,
 }
 
-export enum SpecialReportChannelType {
+export enum SpecialChannelType {
   Category = 0,
   Channel = 1,
 }

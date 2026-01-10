@@ -1,3 +1,5 @@
+import { SpecialChannel } from "../utils/helperTypes";
+
 /**
  * A general interface for command configurations.
  */
@@ -27,7 +29,7 @@ export interface ICommandConfig {
   /**
    * The channels this command can be used in.
    */
-  channels: string[];
+  channels: SpecialChannel[];
   /**
    * The roles this command can be used by.
    *
@@ -46,8 +48,12 @@ export interface ICommandConfig {
   /**
    * The permissions this command can be used with.
    *
-   * - If empty, don't check for permissions.
+   * - If empty (0n), don't check for permissions.
    * - If `roles`, `users`, and `permissions` are all empty, check for MANAGE_GUILD permissions! This is using discord's bitfield system.
    */
-  permissions: bigint[];
+  permissions: bigint;
 }
+
+export type APICommandConfig = Omit<ICommandConfig, "permissions"> & {
+  permissions: string;
+};

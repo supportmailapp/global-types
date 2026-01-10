@@ -1,6 +1,6 @@
 import { ComponentType } from "discord-api-types/v10";
-import { AnyAPIFeedbackFormComponent, IFormComponent } from "../utils/forms";
-import { ICustomModalField } from "../utils/helperTypes";
+import type { AnyAPIFeedbackFormComponent, IFormComponent } from "../utils/forms";
+import type { ICustomModalField } from "../utils/helperTypes";
 
 export interface IFeedbackTags {
   [key: string]: string | undefined; // This missing means TS issues

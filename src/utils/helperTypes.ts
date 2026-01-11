@@ -40,10 +40,7 @@ export interface ICustomModalField {
   _required: boolean;
 }
 
-export type TopLevelMessageComponent = Exclude<
-  APIMessageTopLevelComponent,
-  APIFileComponent | APIMediaGalleryComponent
->;
+export type TopLevelMessageComponent = Exclude<APIMessageTopLevelComponent, APIFileComponent | APIMediaGalleryComponent>;
 
 /**
  * Does the `1 << n` operation.
@@ -56,6 +53,6 @@ export type TopLevelMessageComponent = Exclude<
  * }
  * ```
  */
-export function bitfieldBit(n: number): number {
-  return 1 << n;
+export function bitfieldBit(n: number | bigint | string): bigint {
+  return BigInt(1) << BigInt(n);
 }

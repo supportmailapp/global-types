@@ -37,7 +37,7 @@ export interface IBlacklistEntry {
   /**
    * A bitfield indicating the active scopes for this entry.
    *
-   * @see {@link BlacklistScope}
+   * @see {BlacklistScope}
    *
    * For example, to check if tickets are blacklisted:
    * ```ts

@@ -11,6 +11,13 @@ export enum BlacklistScope {
   tags = 1 << 3, // 8
 }
 
+export const BlacklistScopesMap = {
+  [BlacklistScope.global]: "global",
+  [BlacklistScope.tickets]: "tickets",
+  [BlacklistScope.reports]: "reports",
+  [BlacklistScope.tags]: "tags",
+} as const;
+
 export const MinBlacklistScope = BlacklistScope.tickets;
 export const MaxBlacklistScope = BlacklistScope.tags;
 

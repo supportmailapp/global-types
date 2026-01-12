@@ -1,4 +1,3 @@
-import { ComponentType } from "discord-api-types/v10";
 import type { AnyAPIFeedbackFormComponent, IFileUploadComponent, IFormComponent } from "../utils/forms";
 import type { ICustomModalField } from "../utils/helperTypes";
 

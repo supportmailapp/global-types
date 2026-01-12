@@ -1,4 +1,4 @@
-import { SpecialChannel } from "../utils/helperTypes";
+import type { SpecialChannel } from "../utils/helperTypes";
 
 /**
  * A general interface for command configurations.

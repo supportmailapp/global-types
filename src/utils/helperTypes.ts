@@ -5,6 +5,7 @@ import type {
   TextInputStyle,
 } from "discord-api-types/v10";
 import { EntityType, SpecialChannelType } from "./enums";
+export * from "./forms";
 
 export type SpecialChannel = {
   t: SpecialChannelType;

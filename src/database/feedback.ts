@@ -1,5 +1,5 @@
 import { ComponentType } from "discord-api-types/v10";
-import type { AnyAPIFeedbackFormComponent, IFormComponent } from "../utils/forms";
+import type { AnyAPIFeedbackFormComponent, IFileUploadComponent, IFormComponent } from "../utils/forms";
 import type { ICustomModalField } from "../utils/helperTypes";
 
 export interface IFeedbackTags {
@@ -11,7 +11,7 @@ export interface IFeedbackTags {
   five?: string;
 }
 
-export type IFeedbackFormComponent = Exclude<IFormComponent, { type: ComponentType.File }>;
+export type IFeedbackFormComponent = Exclude<IFormComponent, IFileUploadComponent>;
 
 export interface IFeedbackConfig {
   guildId: string;

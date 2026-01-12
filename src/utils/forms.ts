@@ -4,7 +4,7 @@ export type ModalComponentType =
   | ComponentType.TextInput
   | ComponentType.TextDisplay
   | ComponentType.StringSelect
-  | ComponentType.File;
+  | ComponentType.FileUpload;
 
 type IBaseFormComponent<T extends ModalComponentType> = {
   /**
@@ -37,8 +37,7 @@ type IBaseFormComponent<T extends ModalComponentType> = {
   placeholder: string;
 };
 
-export interface ITextDisplayComponent
-  extends Pick<IBaseFormComponent<ComponentType.TextDisplay>, "id" | "type"> {
+export interface ITextDisplayComponent extends Pick<IBaseFormComponent<ComponentType.TextDisplay>, "id" | "type"> {
   content: string;
 }
 
@@ -67,7 +66,7 @@ export interface IStringSelectOption {
   default?: boolean;
 }
 
-export interface IFileUploadComponent extends Omit<IBaseFormComponent<ComponentType.File>, "placeholder"> {
+export interface IFileUploadComponent extends Omit<IBaseFormComponent<ComponentType.FileUpload>, "placeholder"> {
   /**
    * The label sent in the file thread along with their respective file(s).
    *
@@ -101,14 +100,10 @@ export interface IFileUploadComponent extends Omit<IBaseFormComponent<ComponentT
   maxValues?: number;
 }
 
-export type IFormComponent =
-  | ITextDisplayComponent
-  | ITextInputComponent
-  | IStringSelectComponent
-  | IFileUploadComponent;
+export type IFormComponent = ITextDisplayComponent | ITextInputComponent | IStringSelectComponent | IFileUploadComponent;
 
 export type AnyAPIFormComponent = IFormComponent & { _id?: string; local?: true };
-export type AnyAPIFeedbackFormComponent = Exclude<AnyAPIFormComponent, { type: ComponentType.File }>;
+export type AnyAPIFeedbackFormComponent = Exclude<AnyAPIFormComponent, { type: ComponentType.FileUpload }>;
 
 /**
  * API Form Component with local flag

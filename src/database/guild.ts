@@ -43,6 +43,8 @@ export interface ITicketConfig {
    * This is used to log the message in the ticket post when a mod sends a message using the `/send` command.
    */
   webhookDocId?: string;
+  creationMessage?: string | null;
+  closeMessage?: string | null;
 }
 
 export interface ReportChannelSettings {

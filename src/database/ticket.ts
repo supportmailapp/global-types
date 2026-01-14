@@ -9,6 +9,7 @@ export interface ITicket {
   userId: string;
   guildId: string;
   forumId: string;
+  categoryId?: string;
   postId: string;
   count: number;
   status: TicketStatus;

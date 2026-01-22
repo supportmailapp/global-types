@@ -54,4 +54,9 @@ type TestLogEvent = IBaseLogEvent & {
 
 export type ALogEvent = IBaseLogEvent;
 
-export type TLogEvent = TestLogEvent | TicketCreatedEvent | TicketClosedEvent | TicketReopenedEvent | TicketDeletedEvent;
+export type TLogEvent =
+  | TestLogEvent
+  | TicketCreatedEvent
+  | TicketClosedEvent
+  | TicketReopenedEvent
+  | TicketDeletedEvent;

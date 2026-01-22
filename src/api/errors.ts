@@ -30,7 +30,11 @@ export class ClientAPIError implements IClientAPIError {
   public response: any;
   public data: ClientAPIErrorData | undefined;
 
-  constructor(message: string, code: ClientAPIErrorCodes, { response = undefined, data = undefined }: ClientAPIErrorExtraFields) {
+  constructor(
+    message: string,
+    code: ClientAPIErrorCodes,
+    { response = undefined, data = undefined }: ClientAPIErrorExtraFields,
+  ) {
     this.message = message;
     this.code = code;
     this.response = response;

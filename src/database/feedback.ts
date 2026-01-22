@@ -29,6 +29,9 @@ export interface IFeedbackConfig {
    */
   components?: IFeedbackFormComponent[];
   thankYou?: string;
+  /**
+   * Tags in the forum to apply based on the rating given.
+   */
   tags?: IFeedbackTags;
 }
 

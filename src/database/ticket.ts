@@ -16,6 +16,7 @@ export interface ITicket {
   closeComment?: string;
   lastActive: string; // For sorting purposes
   stateTag?: TicketState; // For tag management (indicates which tag should be applied atm)
+  feedbackId?: string;
   createdAt: Date;
   updatedAt: Date;
 }

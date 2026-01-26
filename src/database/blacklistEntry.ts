@@ -6,7 +6,7 @@ export interface IBlacklistEntry {
    */
   id: string;
   /**
-   * Indicates what is blacklisted
+   * Indicates who is blacklisted
    *
    * - 1 = role
    * - 2 = user
@@ -35,7 +35,7 @@ export interface IBlacklistEntry {
    */
   scope: BlacklistScope;
   /**
-   * A bitfield indicating the active scopes for this entry.
+   * A bitfield indicating the active scopes for this entry. Indicates for what the entity is blacklisted.
    *
    * @see {BlacklistScope}
    *

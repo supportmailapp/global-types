@@ -66,6 +66,7 @@ export interface IReportConfig {
   pausedUntil?: PausedUntil | null;
   channelId: string | null;
   actionsEnabled: boolean;
+  autoResolve?: boolean;
   channels?: ReportChannelSettings;
   pings?: MentionableEntity[];
   immune?: MentionableEntity[];

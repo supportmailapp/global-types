@@ -70,6 +70,10 @@ export interface IStringSelectOption {
   default?: boolean;
 }
 
+export interface ClientStringSelectOption extends IStringSelectOption {
+  local?: true;
+}
+
 export interface IFileUploadComponent
   extends Omit<IBaseFormComponent<ComponentType.FileUpload>, "placeholder"> {
   /**

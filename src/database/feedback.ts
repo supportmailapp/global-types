@@ -52,6 +52,14 @@ export interface IFeedbackAnswer {
   label: string;
   answer: string;
 }
+export interface IFeedbackUpload {
+  /**
+   * The ID of the question this answer corresponds to.
+   */
+  questionId: string;
+  label: string;
+  uploads: string[];
+}
 
 export interface IFeedback {
   guildId: string;
@@ -61,7 +69,17 @@ export interface IFeedback {
    * A mapping of question IDs to answers.
    */
   answers: IFeedbackAnswer[];
+  /**
+   * `channelid-messageid`
+   */
+  logMessage?: string;
   timestamp: Date;
+  /**
+   * All file uploads fields and their uploads.
+   *
+   * Due to the nature of expiring attachment links, we post the attachment URLs in the feedback channel, otherwise it ain't possible.
+   */
+  uploads?: IFeedbackUpload[];
 }
 
 export type APIFeedback = Omit<IFeedback, "timestamp"> & {

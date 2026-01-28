@@ -59,7 +59,10 @@ export interface IStringSelectComponent extends IBaseSelectMenuComponent<Compone
 }
 
 export interface IStringSelectOption {
-  id?: string;
+  /**
+   * Automatically applied by monogdb.
+   */
+  _id: string;
   label: string;
   value: string;
   description?: string;

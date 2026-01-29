@@ -7,7 +7,7 @@ export interface ICommandConfig {
   /**
    * The unique command ID.
    */
-  id: string;
+  id?: string;
   /**
    * The name(s) of the command.
    *

@@ -18,11 +18,6 @@ export interface IBlacklistEntry {
    */
   guildId?: string;
   /**
-   * @deprecated
-   * Use {@link scope} instead.
-   */
-  _module: BlacklistScope;
-  /**
    * Indicates from what the user is restricted.
    *
    * - `0` = global

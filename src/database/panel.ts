@@ -1,0 +1,98 @@
+import type {
+  APIAllowedMentions,
+  APIBaseComponent,
+  APIButtonComponentWithCustomId,
+  APIButtonComponentWithURL,
+  APIContainerComponent,
+  APIMediaGalleryComponent,
+  APISectionComponent,
+  APISeparatorComponent,
+  APITextDisplayComponent,
+  ComponentType,
+} from "discord-api-types/v10";
+import mongoose, { model, Schema } from "mongoose";
+
+export type SMMediaItem = {
+  url: string;
+  description?: string;
+  spoiler?: boolean;
+};
+
+export type SMThumbnailComponent = SMMediaItem & {
+  type: ComponentType.Thumbnail;
+};
+
+type StringifyEmoji<T> = Omit<T, "emoji"> & { emoji?: string };
+
+export type SMActionRowButton = {
+  /**
+   * This will indicate the custom ID of the button, of given.
+   * If the action is "link", this must be a URL button.
+   *
+   * This action will be used in the custom ID before sending to Discord.
+   *
+   * The actions are mapped to customId prefixes:
+   * - "ticket:create" -> "ticketCreate"
+   * - "reply" -> "replyTo"
+   * - "link" -> URL button, no custom ID
+   */
+  action: SMCustomAction;
+} & (StringifyEmoji<APIButtonComponentWithCustomId> | StringifyEmoji<APIButtonComponentWithURL>);
+
+export type SMSectionComponent = Omit<APISectionComponent, "accessory"> & {
+  accessory?: SMActionRowButton | SMThumbnailComponent;
+};
+
+export type SMMediaGalleryComponent = Omit<APIMediaGalleryComponent, "items"> & {
+  items: SMMediaItem[];
+};
+
+export type SMCustomAction = "ticket:create" | "reply" | "link";
+
+export type SMSelectOption = {
+  label: string;
+  action: Exclude<SMCustomAction, "link">;
+  value: string;
+};
+
+export type SMSelect = {
+  type: ComponentType.StringSelect;
+  custom_id: "panelSelect";
+  options: SMSelectOption[];
+  placeholder?: string;
+};
+export type SMComponentInActionRow = SMActionRowButton | SMSelect;
+export type SMActionRowComponent = APIBaseComponent<ComponentType.ActionRow> & {
+  /**
+   * The components in the ActionRow
+   */
+  components: SMComponentInActionRow[];
+};
+
+export type SMComponentInContainer =
+  | SMMediaGalleryComponent
+  | SMSectionComponent
+  | APISeparatorComponent
+  | APITextDisplayComponent
+  | SMActionRowComponent;
+
+export type SMContainerComponent = Omit<APIContainerComponent, "components"> & {
+  components: SMComponentInContainer[];
+};
+
+export type SMTopLevelMessageComponent =
+  | SMContainerComponent
+  | SMMediaGalleryComponent
+  | SMSectionComponent
+  | APISeparatorComponent
+  | APITextDisplayComponent
+  | SMActionRowComponent;
+
+export interface IPanel {
+  guildId: string;
+  createdBy: string;
+  allowedMentions?: Omit<APIAllowedMentions, "replied_user">;
+  data: SMTopLevelMessageComponent[];
+  createdAt: Date;
+  updatedAt: Date;
+}

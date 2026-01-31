@@ -50,9 +50,24 @@ export type SMMediaGalleryComponent = Omit<APIMediaGalleryComponent, "items"> & 
 export type SMCustomAction = "ticket:create" | "reply" | "link";
 
 export type SMSelectOption = {
-  label: string;
+  /**
+   * Automatically applied by monogdb.
+   */
+  _id: string;
   action: Exclude<SMCustomAction, "link">;
   value: string;
+  label: string;
+  emoji?: string;
+  description?: string;
+};
+
+export type ClientSMSelectOption = SMSelectOption & {
+  _id?: string;
+  local?: true;
+};
+
+export type ClientSMSelect = Omit<SMSelect, "options"> & {
+  options: ClientSMSelectOption[];
 };
 
 export type SMSelect = {

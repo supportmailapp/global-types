@@ -10,7 +10,6 @@ import type {
   APITextDisplayComponent,
   ComponentType,
 } from "discord-api-types/v10";
-import mongoose, { model, Schema } from "mongoose";
 
 export type SMMediaItem = {
   url: string;

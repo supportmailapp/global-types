@@ -119,7 +119,6 @@ export interface IPanel {
   guildId: string;
   channelId?: string;
   messageId?: string;
-  createdBy: string;
   allowedMentions?: Omit<APIAllowedMentions, "replied_user">;
   data: SMTopLevelMessageComponent[];
   createdAt: Date;

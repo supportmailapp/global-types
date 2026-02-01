@@ -112,11 +112,20 @@ export type AnySMComponent =
   | APISeparatorComponent
   | APITextDisplayComponent;
 
+export type SMAllowedMentions = Omit<APIAllowedMentions, "replied_user">;
+
 export interface IPanel {
   guildId: string;
+  channelId?: string;
+  messageId?: string;
   createdBy: string;
   allowedMentions?: Omit<APIAllowedMentions, "replied_user">;
   data: SMTopLevelMessageComponent[];
   createdAt: Date;
   updatedAt: Date;
+}
+
+export interface APIPanel extends Omit<IPanel, "createdAt" | "updatedAt"> {
+  createdAt?: string;
+  updatedAt?: string;
 }

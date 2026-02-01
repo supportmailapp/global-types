@@ -25,7 +25,7 @@ export type AnyEntity = UserEntity | GuildEntity | RoleEntity;
 
 export type IPartialEmoji = {
   name: string;
-  id?: string | null;
+  id?: string;
   animated?: boolean;
 };
 

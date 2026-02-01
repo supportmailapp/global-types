@@ -10,6 +10,7 @@ import type {
   APITextDisplayComponent,
   ComponentType,
 } from "discord-api-types/v10";
+import { APIAllowedMentions as SMAPIAllowedMentions } from "../utils/validators.js";
 
 export type SMMediaItem = {
   url: string;
@@ -125,7 +126,8 @@ export interface IPanel {
   updatedAt: Date;
 }
 
-export interface APIPanel extends Omit<IPanel, "createdAt" | "updatedAt"> {
+export interface APIPanel extends Omit<IPanel, "createdAt" | "updatedAt" | "allowedMentions"> {
+  allowedMentions: SMAPIAllowedMentions;
   createdAt?: string;
   updatedAt?: string;
 }

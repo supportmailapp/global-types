@@ -102,6 +102,16 @@ export type SMTopLevelMessageComponent =
   | APITextDisplayComponent
   | SMActionRowComponent;
 
+export type AnySMComponent =
+  | SMActionRowButton
+  | SMSelect
+  | SMActionRowComponent
+  | SMContainerComponent
+  | SMMediaGalleryComponent
+  | SMSectionComponent
+  | APISeparatorComponent
+  | APITextDisplayComponent;
+
 export interface IPanel {
   guildId: string;
   createdBy: string;

@@ -8,7 +8,7 @@ export interface IUserToken {
    * "user" or missing - regular user access
    * "admin" - admin access
    */
-  clearance?: "user" | "admin";
+  clearance?: "user" | "mod" | "admin";
   expiresAt: Date;
   createdAt: Date;
   updatedAt: Date;

@@ -69,6 +69,9 @@ export enum EntityType {
 
 export enum LogEventType {
   TestEvent = "testEvent",
+
+  InternalConfigLoad = "internalConfigLoad",
+
   TicketCreated = "ticketCreate",
   TicketClosed = "ticketClose",
   TicketReopened = "ticketReopen",

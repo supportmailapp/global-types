@@ -12,13 +12,13 @@
     "prepack": "pnpm run build"
   },
   "dependencies": {
-    "discord-api-types": "^0.38.37",
-    "zod": "^4.3.4",
+    "discord-api-types": "^0.38.40",
+    "zod": "^4.3.6",
     "zod-validation-error": "^4.0.2"
   },
   "devDependencies": {
     "discord.js": "^14.25.1",
-    "mongoose": "^9.1.1",
+    "mongoose": "^9.2.3",
     "typescript": "^5.9.3"
   },
   "repository": {

@@ -1,25 +1,5 @@
-import type { EntityType, ReportNotificationType, SpecialReportChannelType } from "../utils/enums.js";
-import type { ICustomModalField, MentionableEntity } from "../utils/helperTypes.js";
-
-export interface IFeedbackTags {
-  [key: string]: string | undefined; // This missing means TS issues
-  one?: string;
-  two?: string;
-  three?: string;
-  four?: string;
-  five?: string;
-}
-
-export interface IFeedbackConfig {
-  /**
-   * @deprecated Not used after dashboard is done! Use `isEnabled` instead.
-   */
-  postId?: string;
-  isEnabled: boolean;
-  questions?: ICustomModalField[];
-  thankYou?: string;
-  tags?: IFeedbackTags;
-}
+import type { EntityType, ReportNotificationType } from "../utils/enums.js";
+import type { MentionableEntity, SpecialChannel } from "../utils/helperTypes.js";
 
 export interface IAnonym {
   /**
@@ -31,12 +11,6 @@ export interface IAnonym {
    * @deprecated Not used currently. Will be re-enabled with premium.
    */
   alias?: string;
-}
-
-export interface ICustomMessage {
-  content?: string;
-  color?: number;
-  image?: string;
 }
 
 export interface IStatusTags {
@@ -63,25 +37,19 @@ export interface ITicketConfig {
   autoForwarding: boolean;
   allowedBots?: string[];
   pings?: MentionableEntity[];
-  feedback?: IFeedbackConfig;
   /**
    * Webhook ID for the log in a ticket post when a /send command is used.
    *
    * This is used to log the message in the ticket post when a mod sends a message using the `/send` command.
    */
   webhookDocId?: string;
-  creationMessage?: ICustomMessage;
-  closeMessage?: ICustomMessage;
+  creationMessage?: string | null;
+  closeMessage?: string | null;
 }
-
-export type ISpecialReportChannel = {
-  t: SpecialReportChannelType;
-  id: string;
-};
 
 export interface ReportChannelSettings {
   setting: "IN" | "EX"; // IN = Include, EX = Exclude
-  ids: ISpecialReportChannel[];
+  ids: SpecialChannel[];
 }
 
 export interface ReportLimitsConfig {
@@ -98,6 +66,7 @@ export interface IReportConfig {
   pausedUntil?: PausedUntil | null;
   channelId: string | null;
   actionsEnabled: boolean;
+  autoResolve?: boolean;
   channels?: ReportChannelSettings;
   pings?: MentionableEntity[];
   immune?: MentionableEntity[];

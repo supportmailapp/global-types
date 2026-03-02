@@ -1,5 +1,6 @@
 // @ts-nocheck | TODO: Fix types
-import { Entity, ICustomModalField, IPartialEmoji, MentionableEntity } from "../utils/helperTypes";
+import { ICustomModalField, IFormComponent } from "../utils/forms";
+import { Entity, IPartialEmoji, MentionableEntity } from "../utils/helperTypes";
 
 export interface ITicketCategory {
   /**
@@ -24,25 +25,44 @@ export interface ITicketCategory {
   /**
    * Optional emoji associated with this category.
    */
-  emoji?: IPartialEmoji;
+  emoji?: string;
   /**
    * The Tag ID that should be used for this category.
    *
    * Because it's in a forum channel...
    */
-  tag: string;
+  tag?: string;
   /**
    * Optional array of entities to ping when a ticket of this category is created.
    */
   pings?: MentionableEntity[];
   /**
    * Custom Modal fields to be displayed in the ticket creation modal.
-   */
-  fields: ICustomModalField[];
-  /**
-   * The ObjectId referece of a custom message.
    *
-   * Is sent after the user created the ticket.
+   * @deprecated Use `components` instead.
    */
-  customMessageId: string;
+  fields?: ICustomModalField[];
+  /**
+   * Custom Form components to be displayed in the ticket creation modal.
+   */
+  components: IFormComponent[];
+  creationMessage?: string | null;
+  closeMessage?: string | null;
 }
+
+// The type used when sending/receiving ticket categories via the API
+export type APITicketCategory = Omit<ITicketCategory, "customMessageId"> & {
+  /**
+   * If from the server, the MongoDB ObjectId as a string.
+   *
+   * If local, an ISO string representing the creation date. Gets replaced when saved to the database.
+   */
+  _id: string;
+  /**
+   * If set, then this ticket category is only stored locally and not in the database.
+   *
+   * it is automatically created when saving a new ticket category.
+   */
+  local?: true;
+  customMessageId?: string;
+};

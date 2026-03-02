@@ -2,9 +2,15 @@ import type {
   APIFileComponent,
   APIMediaGalleryComponent,
   APIMessageTopLevelComponent,
+  TextInputStyle,
 } from "discord-api-types/v10";
-import type { TextInputStyle } from "discord.js";
-import { EntityType } from "./enums";
+import { EntityType, SpecialChannelType } from "./enums";
+export * from "./forms";
+
+export type SpecialChannel = {
+  t: SpecialChannelType;
+  id: string;
+};
 
 export type Entity<T extends EntityType> = {
   typ: T;
@@ -19,10 +25,11 @@ export type AnyEntity = UserEntity | GuildEntity | RoleEntity;
 
 export type IPartialEmoji = {
   name: string;
-  id?: string | null;
+  id?: string;
   animated?: boolean;
 };
 
+/** @deprecated Use the new `IFormComponent` */
 export interface ICustomModalField {
   /** Min: 1 | Max: 5 */
   position: number;
@@ -50,6 +57,6 @@ export type TopLevelMessageComponent = Exclude<
  * }
  * ```
  */
-export function bitfieldBit(n: number): number {
-  return 1 << n;
+export function bitfieldBit(n: number | bigint | string): bigint {
+  return BigInt(1) << BigInt(n);
 }

@@ -1,5 +1,6 @@
 export * from "./utils/enums.js";
 export * from "./utils/helperTypes.js";
+export * from "./utils/forms.js";
 // export * from "./utils/validators.js"; | WIP
 
 export * from "./database/user.js";
@@ -15,5 +16,8 @@ export * from "./database/botStats.js";
 export * from "./database/logEvent.js";
 export * from "./database/knowledge.js";
 export * from "./database/ticketCategories.js";
+export * from "./database/feedback.js";
+export * from "./database/commandConfig.js";
+export * from "./database/panel.js";
 
 export * from "./api/errors.js";

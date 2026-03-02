@@ -6,7 +6,7 @@ export interface IBlacklistEntry {
    */
   id: string;
   /**
-   * Indicates what is blacklisted
+   * Indicates who is blacklisted
    *
    * - 1 = role
    * - 2 = user
@@ -17,11 +17,6 @@ export interface IBlacklistEntry {
    * The guild ID where the entity is blacklisted
    */
   guildId?: string;
-  /**
-   * @deprecated
-   * Use {@link scope} instead.
-   */
-  _module: BlacklistScope;
   /**
    * Indicates from what the user is restricted.
    *
@@ -35,9 +30,9 @@ export interface IBlacklistEntry {
    */
   scope: BlacklistScope;
   /**
-   * A bitfield indicating the active scopes for this entry.
+   * A bitfield indicating the active scopes for this entry. Indicates for what the entity is blacklisted.
    *
-   * @see {@link BlacklistScope}
+   * @see {BlacklistScope}
    *
    * For example, to check if tickets are blacklisted:
    * ```ts

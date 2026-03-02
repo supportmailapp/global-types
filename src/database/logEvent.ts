@@ -52,10 +52,27 @@ type TestLogEvent = IBaseLogEvent & {
   typ: LogEventType.TestEvent;
 };
 
+type TInternalConfigLoadEvent = IBaseLogEvent & {
+  typ: LogEventType.InternalConfigLoad;
+  extra: {
+    /**
+     * Comma-separated list of config keys that were loaded (e.g. "guild,blacklist,feedback").
+     */
+    keys: string;
+    /**
+     * User ID of the person who triggered the config load, if applicable.
+     */
+    userId?: string;
+  };
+};
+
+export type TInternalLogEvent = TInternalConfigLoadEvent;
+
 export type ALogEvent = IBaseLogEvent;
 
 export type TLogEvent =
   | TestLogEvent
+  | TInternalLogEvent
   | TicketCreatedEvent
   | TicketClosedEvent
   | TicketReopenedEvent

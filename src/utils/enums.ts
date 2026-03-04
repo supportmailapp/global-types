@@ -4,22 +4,22 @@ export enum ReportNotificationType {
   ModeratorInfo = 2,
 }
 
-export enum BlacklistScope {
-  global = 1 << 0, // 1
-  tickets = 1 << 1, // 2
-  reports = 1 << 2, // 4
-  tags = 1 << 3, // 8
-}
+export const BlacklistScopes = {
+  global: 1 << 0, // 1
+  tickets: 1 << 1, // 2
+  reports: 1 << 2, // 4
+  tags: 1 << 3, // 8
+};
 
 export const BlacklistScopesMap = {
-  [BlacklistScope.global]: "global",
-  [BlacklistScope.tickets]: "tickets",
-  [BlacklistScope.reports]: "reports",
-  [BlacklistScope.tags]: "tags",
+  [BlacklistScopes.global.toString()]: "global",
+  [BlacklistScopes.tickets.toString()]: "tickets",
+  [BlacklistScopes.reports.toString()]: "reports",
+  [BlacklistScopes.tags.toString()]: "tags",
 } as const;
 
-export const MinBlacklistScope = BlacklistScope.tickets;
-export const MaxBlacklistScope = BlacklistScope.tags;
+export const MinBlacklistScope = BlacklistScopes.tickets;
+export const MaxBlacklistScope = BlacklistScopes.tags;
 
 export enum ReportStatus {
   ignored = 0,

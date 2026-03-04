@@ -1,4 +1,5 @@
-import { BlacklistScope, EntityType } from "../utils/enums.js";
+// @ts-ignore
+import { BlacklistScopes, EntityType } from "../utils/enums.js";
 
 export interface IBlacklistEntry {
   /**
@@ -28,17 +29,17 @@ export interface IBlacklistEntry {
    *
    * @deprecated Use `scopes` instead.
    */
-  scope: BlacklistScope;
+  scope: number;
   /**
    * A bitfield indicating the active scopes for this entry. Indicates for what the entity is blacklisted.
    *
-   * @see {BlacklistScope}
+   * @see {BlacklistScopes}
    *
    * For example, to check if tickets are blacklisted:
    * ```ts
-   * const isTicketsBlacklisted = (entry.scopes & BlacklistScope.tickets) === BlacklistScope.tickets;
+   * const isTicketsBlacklisted = (entry.scopes & BlacklistScopes.tickets) === BlacklistScopes.tickets;
    * // Or use the helper function
-   * const isTicketsBlacklisted = isScopeBlacklisted(entry, BlacklistScope.tickets);
+   * const isTicketsBlacklisted = isScopeBlacklisted(entry, BlacklistScopes.tickets);
    * ```
    */
   scopes: bigint;

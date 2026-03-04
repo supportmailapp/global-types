@@ -23,7 +23,7 @@ export interface IReport {
   resolvedBy?: string;
   resolvedAt?: Date;
   resolveComment?: string;
-  attachments?: { }
+  attachments?: {};
   createdAt: Date;
   updatedAt: Date;
 }

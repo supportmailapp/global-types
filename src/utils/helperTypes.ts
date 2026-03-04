@@ -41,10 +41,7 @@ export interface ICustomModalField {
   _required: boolean;
 }
 
-export type TopLevelMessageComponent = Exclude<
-  APIMessageTopLevelComponent,
-  APIFileComponent | APIMediaGalleryComponent
->;
+export type TopLevelMessageComponent = Exclude<APIMessageTopLevelComponent, APIFileComponent | APIMediaGalleryComponent>;
 
 /**
  * Does the `1 << n` operation.

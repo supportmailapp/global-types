@@ -28,3 +28,5 @@ logs/
 *.ntvs*
 *.njsproj
 *.sln
+
+pnpm-lock.yaml

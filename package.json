@@ -17,9 +17,11 @@
     "zod-validation-error": "^4.0.2"
   },
   "devDependencies": {
-    "discord.js": "^14.25.1",
     "mongoose": "^9.2.3",
     "typescript": "^5.9.3"
+  },
+  "peerDependencies": {
+    "discord.js": "^14.25.1"
   },
   "repository": {
     "type": "git",

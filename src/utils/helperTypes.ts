@@ -4,8 +4,8 @@ import type {
   APIMessageTopLevelComponent,
   TextInputStyle,
 } from "discord-api-types/v10";
-import { EntityType, SpecialChannelType } from "./enums";
-export * from "./forms";
+import { EntityType, SpecialChannelType } from "./enums.js";
+export * from "./forms.js";
 
 export type SpecialChannel = {
   t: SpecialChannelType;

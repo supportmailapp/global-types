@@ -1,4 +1,4 @@
-import { ClientAPIErrorCodes } from "../utils/enums";
+import { ClientAPIErrorCodes } from "../utils/enums.ts";
 
 interface ClientAPIErrorExtraFields {
   response?: any;

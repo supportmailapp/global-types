@@ -1,4 +1,4 @@
-import { UserRole } from "../utils/enums";
+import { UserRole } from "../utils/enums.js";
 
 export interface IDBUser {
   id: string;

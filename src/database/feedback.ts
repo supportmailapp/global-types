@@ -1,5 +1,5 @@
-import type { AnyAPIFeedbackFormComponent, IFileUploadComponent, IFormComponent } from "../utils/forms";
-import type { ICustomModalField } from "../utils/helperTypes";
+import type { AnyAPIFeedbackFormComponent, IFileUploadComponent, IFormComponent } from "../utils/forms.ts";
+import type { ICustomModalField } from "../utils/helperTypes.ts";
 
 export interface IFeedbackTags {
   [key: string]: string | undefined; // This missing means TS issues

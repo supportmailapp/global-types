@@ -1,4 +1,4 @@
-import type { SpecialChannel } from "../utils/helperTypes";
+import type { SpecialChannel } from "../utils/helperTypes.ts";
 
 /**
  * A general interface for command configurations.

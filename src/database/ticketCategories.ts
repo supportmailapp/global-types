@@ -1,6 +1,6 @@
 // @ts-nocheck | TODO: Fix types
-import { ICustomModalField, IFormComponent } from "../utils/forms";
-import { Entity, IPartialEmoji, MentionableEntity } from "../utils/helperTypes";
+import { ICustomModalField, IFormComponent } from "../utils/forms.ts";
+import { Entity, IPartialEmoji, MentionableEntity } from "../utils/helperTypes.ts";
 
 export interface ITicketCategory {
   /**

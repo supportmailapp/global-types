@@ -1,4 +1,4 @@
-import { LogEventType } from "../utils/enums";
+import { LogEventType } from "../utils/enums.js";
 
 export interface IBaseLogEvent {
   typ: LogEventType;

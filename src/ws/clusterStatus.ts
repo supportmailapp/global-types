@@ -24,7 +24,6 @@ export type ClusterStatusData = {
   shards: ShardStatusData[];
 };
 
-/** Full status of a single galactic.ts cluster, as returned by the `get-cluster-status` WebSocket event. */
 export type ClusterStatus = {
   /** The cluster's ID. */
   id: number;
